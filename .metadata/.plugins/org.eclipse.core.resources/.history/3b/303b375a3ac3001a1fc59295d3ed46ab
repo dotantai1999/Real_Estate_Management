@@ -1,0 +1,9 @@
+package com.dotantai.service;
+
+import java.util.List;
+
+import com.dotantai.dto.BuildingDTO;
+
+public interface IBuildingService {
+	List<BuildingDTO> findAll(Map<String,Object> fieldSearch, int offset, int limit);
+}

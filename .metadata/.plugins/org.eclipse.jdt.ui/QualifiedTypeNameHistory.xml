@@ -1,2 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.stream.Collectors"/>
+<fullyQualifiedTypeName name="com.dotantai.builder.BuildingSearchBuilder.Builder"/>
+<fullyQualifiedTypeName name="org.apache.commons.lang.StringUtils"/>
+<fullyQualifiedTypeName name="com.mysql.cj.util.StringUtils"/>
+<fullyQualifiedTypeName name="com.dotantai.paging.Pageable"/>
+<fullyQualifiedTypeName name="java.util.Map.Entry"/>
+</qualifiedTypeNameHistroy>

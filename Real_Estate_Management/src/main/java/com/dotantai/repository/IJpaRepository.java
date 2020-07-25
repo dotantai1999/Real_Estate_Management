@@ -1,0 +1,12 @@
+package com.dotantai.repository;
+
+import java.util.List;
+import java.util.Map;
+
+import com.dotantai.paging.Pageable;
+
+public interface IJpaRepository<T> {
+	List<T> findAll(Map<String,Object> properties, Pageable pageable, Object...objects );
+	List<T> findAll(Map<String,Object> properties, Object...objects );
+
+}

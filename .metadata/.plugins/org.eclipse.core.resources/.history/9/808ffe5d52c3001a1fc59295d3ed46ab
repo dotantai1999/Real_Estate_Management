@@ -1,0 +1,76 @@
+
+package com.dotantai.repository.impl;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.dotantai.entity.BuildingEntity;
+import com.dotantai.paging.Pageable;
+import com.dotantai.repository.IBuildingRepository;
+
+public class BuildingRepositoryImpl extends JpaRepositoryImpl<BuildingEntity> implements IBuildingRepository {
+
+	@Override
+	public List<BuildingEntity> findAll(Map<String, Object> params, Pageable pageable) {
+		/*
+		 * Tham so dau vao: params: cac tieu chi tim kiem pageable: cac thong so dung de
+		 * phan trang Tra ve: Danh sach cac toa nha thoa dieu kien tim kiem
+		 */
+
+		// Dieu kien tim kiem
+		String name = (String) params.get("name");
+		String district = (String) params.get("district");
+		StringBuilder where = new StringBuilder("");
+
+		// Student code
+
+		if (StringUtils.isNotBlank(name)) {
+			where.append("AND A.name LIKE '%" + name + "%' ");
+		}
+		if (StringUtils.isNotBlank(district)) {
+			where.append("AND A.district LIKE '%" + district + "%' ");
+		}
+		if (params.get("buildingArea") != null) {
+			Integer buildingArea = (Integer) params.get("buildingArea");
+			where.append("AND A.buildingArea = " + buildingArea + " ");
+		}
+		if (params.get("numberOfBasement") != null) {
+			Integer numberOfBasement = (Integer) params.get("numberOfBasement");
+			where.append("AND A.numberOfBasement = " + numberOfBasement + " ");
+		}
+
+		// 2 years exp
+		if (params != null && params.size() > 0) {
+			String[] keys = new String[params.size()];
+			Object[] values = new Object[params.size()];
+
+			int i = 0;
+			for (Entry<String, Object> s : params.entrySet()) {
+				keys[i] = s.getKey();
+				values[i] = s.getValue();
+				i++;
+			}
+
+			for (i = 0; i < keys.length; i++) {
+				if (values[i] instanceof String && StringUtils.isNotBlank(values[i].toString())) {
+					where.append("AND LOWER(A."+keys[i].toString()+") LIKE '%" + values[i].toString() + "%' ");
+
+				} else if (values[i] instanceof Integer && values[i] != null) {
+					where.append("AND LOWER(A."+keys[i].toString()+") = "+values[i].toString()+" ");
+
+				} else if (values[i] instanceof Long) {
+					where.append("AND LOWER(A."+keys[i].toString()+") = "+values[i].toString()+" ");
+				}
+
+			}
+
+		}
+
+		return this.findAll(pageable, where.toString());
+
+	}
+
+}

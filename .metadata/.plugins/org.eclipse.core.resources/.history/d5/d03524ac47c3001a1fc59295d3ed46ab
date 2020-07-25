@@ -1,0 +1,5 @@
+package com.dotantai.paging;
+
+public class PageableImp {
+
+}

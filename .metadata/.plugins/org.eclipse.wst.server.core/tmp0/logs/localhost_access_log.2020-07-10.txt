@@ -1,0 +1,13 @@
+127.0.0.1 - - [10/Jul/2020:14:02:43 +0700] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:02:45 +0700] "GET /Real_Estate_Management/ HTTP/1.1" 404 1101
+127.0.0.1 - - [10/Jul/2020:14:05:37 +0700] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:05:38 +0700] "GET /Real_Estate_Management/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:05:38 +0700] "GET /Real_Estate_Management/trang-chu;jsessionid=FD484D1A28E3086EBB2BD291550F6841 HTTP/1.1" 404 1154
+127.0.0.1 - - [10/Jul/2020:14:15:37 +0700] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:15:37 +0700] "GET /Real_Estate_Management/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:15:37 +0700] "GET /Real_Estate_Management/trang-chu HTTP/1.1" 404 1110
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:21:12 +0700] "GET /Real_Estate_Management/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:21:12 +0700] "GET /Real_Estate_Management/trang-chu HTTP/1.1" 404 1110
+127.0.0.1 - - [10/Jul/2020:14:24:04 +0700] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:24:05 +0700] "GET /Real_Estate_Management/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Jul/2020:14:24:06 +0700] "GET /Real_Estate_Management/trangchu HTTP/1.1" 200 149

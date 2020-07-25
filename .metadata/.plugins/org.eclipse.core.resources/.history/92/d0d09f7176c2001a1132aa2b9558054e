@@ -1,0 +1,5 @@
+package com.dotantai.dto;
+
+public class BuildingDTO {
+
+}

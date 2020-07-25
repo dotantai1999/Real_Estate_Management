@@ -1,0 +1,33 @@
+package com.dotantai.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.dotantai.dto.BuildingDTO;
+import com.dotantai.service.IBuildingService;
+import com.dotantai.service.impl.BuildingServiceImpl;
+
+public class BuildingController {
+	public static void main(String[] args) 
+	{
+		int page = 1;
+		int limit = 2;
+		int offset = (page - 1)*limit;
+		
+		String name = "TOWER";
+		String district = "QUAN_2";
+		int buildingArea = 500;
+		int numberOfBasement = 1;
+		IBuildingService buildingService = new BuildingServiceImpl();
+		BuildingSearchBuilder buildingSearchBuilder = 
+		List<BuildingDTO> buildings = buildingService.findAll(properties,offset,limit);
+		for(BuildingDTO item : buildings)
+		{
+			System.out.println("Name: "+item.getName()+" - Street: " + item.getStreet());
+		}
+		System.exit(0);
+		
+		
+	}
+}

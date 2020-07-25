@@ -1,0 +1,28 @@
+package com.dotantai.controller;
+
+import java.util.List;
+
+import com.dotantai.dto.BuildingDTO;
+import com.dotantai.service.IBuildingService;
+import com.dotantai.service.impl.BuildingServiceImpl;
+
+public class BuildingController {
+	public static void main(String[] args) 
+	{
+		int page = 1;
+		int limit = 2;
+		int offset = (page - 1)*limit;
+		
+		String name = "TOWER";
+		String district = "QUAN_2";
+		IBuildingService buildingService = new BuildingServiceImpl();
+		List<BuildingDTO> buildings = buildingService.findAll(offset,limit,name,district);
+		for(BuildingDTO item : buildings)
+		{
+			System.out.println("Name: "+item.getName()+" - Street: " + item.getStreet());
+		}
+		System.exit(0);
+		
+		
+	}
+}

@@ -1,0 +1,43 @@
+package com.dotantai.service.impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.dotantai.converter.BuildingConverter;
+import com.dotantai.dto.BuildingDTO;
+import com.dotantai.entity.BuildingEntity;
+import com.dotantai.repository.IBuildingRepository;
+import com.dotantai.repository.impl.BuildingRepositoryImpl;
+import com.dotantai.service.IBuildingService;
+
+public class BuildingServiceImpl implements IBuildingService {
+	private IBuildingRepository buildingRepository;
+	private BuildingConverter buildingConverter;
+
+	public BuildingServiceImpl() {
+		buildingRepository = (IBuildingRepository) new BuildingRepositoryImpl();
+		buildingConverter = new BuildingConverter();
+	}
+
+	@Override
+	public List<BuildingDTO> findAll(Map<String, Object> fieldSearch,int offset, int limit) {
+		
+		
+		/*
+		 * String where =
+		 * "AND A.name LIKE '%"+name+"%' AND A.district LIKE '%"+district+"%'";
+		 * List<BuildingDTO> results = new ArrayList<>(); List<BuildingEntity>
+		 * buildingEntities = buildingRepository.findAll(offset,limit,where); for
+		 * (BuildingEntity item : buildingEntities) { BuildingDTO buildingDTO =
+		 * buildingConverter.convertToDTO(item); results.add(buildingDTO); }
+		 */
+
+		Map<String,Object> maps = new HashMap<>();
+		List<BuildingEntity> buildingEntities = buildingRepository.findAll(fieldSeach, offset, limit);
+		return buildingEntitites.stream()
+
+	}
+
+}

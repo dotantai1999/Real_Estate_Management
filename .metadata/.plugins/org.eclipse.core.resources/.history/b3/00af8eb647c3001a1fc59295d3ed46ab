@@ -1,0 +1,22 @@
+package com.dotantai.paging;
+
+public class PageableImp implements Pageable {
+
+	@Override
+	public Integer getPage() {
+		
+	}
+
+	@Override
+	public Integer getOffset() {
+		
+	}
+
+	@Override
+	public Integer getLimit() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
+}

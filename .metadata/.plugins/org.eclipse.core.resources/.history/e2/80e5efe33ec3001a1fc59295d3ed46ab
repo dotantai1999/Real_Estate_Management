@@ -1,0 +1,55 @@
+package com.dotantai.builder;
+
+public class BuildingSearchBuilder {
+	private String name;
+	private String district;
+	private int buildingArea;
+	private int numberOfBasement;
+	
+	public int getNumberOfBasement() {
+		return numberOfBasement;
+	}
+	
+	public void setBuildingArea(int buildingArea) {
+		this.buildingArea = buildingArea;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public String getDistrict() {
+		return district;
+	}
+	
+	private BuildingSearchBuilder(Builder builder)
+	{
+		this.name = builder.name;
+		this.district = builder.district;
+		this.buildingArea = builder.buildingArea;
+		this.numberOfBasement = builder.numberOfBasement;
+	}
+	
+	public static class Builder{
+		private String name;
+		private String district;
+		private int buildingArea;
+		private int numberOfBasement;
+		
+		public Builder setName(String name) {
+			this.name = name;
+			return this;
+		}
+		
+		public Builder setDistrict(String district) {
+			this.district = district;
+			return this;
+		}
+		
+		public BuildingSearchBuilder build()
+		{
+			return new BuildingSearchBuilder(this);
+		}
+		
+	}
+
+}

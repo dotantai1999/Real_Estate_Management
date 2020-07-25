@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="selection" value="&#x09;&#x09;//Student code"/>
+		<list key="findhistory">
+			<item value="&#x09;&#x09;//Student code"/>
+			<item value="StringBuilder where = new StringBuilder(&quot;&quot;);"/>
+			<item value="&#x0D;&#x0A;&#x09;&#x09;String where = &quot;AND A.name LIKE &apos;%&quot;+name+&quot;%&apos; AND A.district LIKE &apos;%&quot;+district+&quot;%&apos;&quot;;&#x0D;&#x0A;&#x09;&#x09;List&lt;BuildingDTO&gt; results = new ArrayList&lt;&gt;();&#x0D;&#x0A;&#x09;&#x09;List&lt;BuildingEntity&gt; buildingEntities = buildingRepository.findAll(offset,limit,where);&#x0D;&#x0A;&#x09;&#x09;for (BuildingEntity item : buildingEntities) {&#x0D;&#x0A;&#x09;&#x09;&#x09;BuildingDTO buildingDTO = buildingConverter.convertToDTO(item);&#x0D;&#x0A;&#x09;&#x09;&#x09;results.add(buildingDTO);&#x0D;&#x0A;&#x09;&#x09;}"/>
+			<item value="String where = &quot;AND A.name LIKE &apos;%&quot;+name+&quot;%&apos; AND A.district LIKE &apos;%&quot;+district+&quot;%&apos;&quot;;"/>
+		</list>
+	</section>
+</section>

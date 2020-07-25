@@ -1,0 +1,83 @@
+package com.dotantai.repository.impl;
+
+import java.lang.annotation.Annotation;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
+import com.dotantai.annotation.Entity;
+import com.dotantai.annotation.Table;
+import com.dotantai.mapper.ResultSetMapper;
+import com.dotantai.paging.Pageable;
+import com.dotantai.repository.IJpaRepository;
+
+public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
+	private Class<T> zClass;
+
+	public JpaRepositoryImpl() {
+		Type type = getClass().getGenericSuperclass();
+		ParameterizedType parameterizedType = (ParameterizedType) type;
+		zClass = (Class<T>) parameterizedType.getActualTypeArguments()[0];
+	}
+
+	@Override
+	public List<T> findAll(Pageable pageable, Object... where) {
+		String tableName = "";
+		if (zClass.isAnnotationPresent((Class<? extends Annotation>) Entity.class)
+				&& zClass.isAnnotationPresent((Class<? extends Annotation>) Table.class)) {
+			Table tableClass = zClass.getAnnotation(Table.class);
+			tableName = tableClass.name();
+		}
+
+		StringBuilder sql = new StringBuilder("select * from " + tableName + " A where 1=1 ");
+		if(where != null && where.length > 0)
+		{
+			sql.append(where[0]);
+		}
+		sql.append(" limit " + pageable.getOffset() + "," + limit);
+		ResultSetMapper<T> resultSetMapper = new ResultSetMapper<>();
+
+		Connection connection = null;
+		//PreparedStatement statement = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = EntityManagerFactory.getConnection();
+			//statement = connection.prepareStatement(sql.toString());
+			//resultSet = statement.executeQuery();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sql.toString());
+			
+			return resultSetMapper.mapRow(resultSet, this.zClass);
+
+		} catch (SQLException e) {
+			return null;
+		} finally {
+
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+
+				if (statement != null) {
+					statement.close();
+				}
+
+				if (resultSet != null) {
+					resultSet.close();
+				}
+
+			} catch (SQLException e) {
+				return null;
+			}
+
+		}
+
+	}
+
+}

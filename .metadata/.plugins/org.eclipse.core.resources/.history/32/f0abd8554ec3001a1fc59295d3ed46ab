@@ -1,0 +1,52 @@
+
+package com.dotantai.repository.impl;
+
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.dotantai.entity.BuildingEntity;
+import com.dotantai.paging.Pageable;
+import com.dotantai.repository.IBuildingRepository;
+
+public class BuildingRepositoryImpl extends JpaRepositoryImpl<BuildingEntity> implements IBuildingRepository {
+
+	@Override
+	public List<BuildingEntity> findAll(Map <String,Object> params, Pageable pageable) {
+		/* Tham so dau vao: params: cac tieu chi tim kiem
+		 * 					pageable: cac thong so dung de phan trang
+		 * Tra ve: Danh sach cac toa nha thoa dieu kien tim kiem
+		 */
+		
+		//Dieu kien tim kiem
+		String name = (String)params.get("name");
+		String district = (String)params.get("district");
+		
+		
+		//Student code
+		/*
+		 * StringBuilder where = new StringBuilder(""); if(StringUtils.isNotBlank(name))
+		 * { where.append("AND A.name LIKE '%"+name+"%' "); }
+		 * if(StringUtils.isNotBlank(district)) {
+		 * where.append("AND A.district LIKE '%"+district+"%' "); }
+		 * if(params.get("buildingArea") != null) { Integer buildingArea =
+		 * (Integer)params.get("buildingArea");
+		 * where.append("AND A.buildingArea = "+buildingArea+" "); }
+		 * if(params.get("numberOfBasement") != null) { Integer numberOfBasement =
+		 * (Integer)params.get("numberOfBasement");
+		 * where.append("AND A.numberOfBasement = "+numberOfBasement+" "); }
+		 */
+		
+		//2 years exp
+		if(params != null && params.size() > 0)
+		{
+			String[] key = new String[params.size()];
+		}
+		
+		return this.findAll(pageable, where.toString());
+		
+	}
+	
+		
+}
