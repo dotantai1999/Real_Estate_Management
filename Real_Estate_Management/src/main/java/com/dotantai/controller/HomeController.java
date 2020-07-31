@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/trangchu"})
+@WebServlet(urlPatterns = {"/admin-home"})
 public class HomeController extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
@@ -23,7 +23,8 @@ public class HomeController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("/views/home.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/views/admin/home.jsp");
+		//RequestDispatcher rd = request.getRequestDispatcher("/decorators/admin.jsp");
 		rd.forward(request, response);
 		
 	}
