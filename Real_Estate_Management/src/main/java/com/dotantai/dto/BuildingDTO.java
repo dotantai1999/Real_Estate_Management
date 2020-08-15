@@ -15,6 +15,60 @@ public class BuildingDTO extends AbstractDTO {
 	private String carCost;
 	private String motorbikeCost;
 	private String overtimeCost;
+	private String[] buildingTypes = new String[] {};
+	private String costRentFrom;
+	private String costRentTo;
+	private String areaRentFrom;
+	private String areaRentTo;
+	private String staffId;
+
+	public String getStaffId() {
+		return staffId;
+	}
+
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
+	}
+
+	public String getAreaRentFrom() {
+		return areaRentFrom;
+	}
+
+	public void setAreaRentFrom(String areaRentFrom) {
+		this.areaRentFrom = areaRentFrom;
+	}
+
+	public String getAreaRentTo() {
+		return areaRentTo;
+	}
+
+	public void setAreaRentTo(String areaRentTo) {
+		this.areaRentTo = areaRentTo;
+	}
+
+	public String getCostRentFrom() {
+		return costRentFrom;
+	}
+
+	public void setCostRentFrom(String costRentFrom) {
+		this.costRentFrom = costRentFrom;
+	}
+
+	public String getCostRentTo() {
+		return costRentTo;
+	}
+
+	public void setCostRentTo(String costRentTo) {
+		this.costRentTo = costRentTo;
+	}
+
+	public String[] getBuildingTypes() {
+		return buildingTypes;
+	}
+
+	public void setBuildingTypes(String[] buildingTypes) {
+		this.buildingTypes = buildingTypes;
+	}
 
 	public String getName() {
 		return name;
