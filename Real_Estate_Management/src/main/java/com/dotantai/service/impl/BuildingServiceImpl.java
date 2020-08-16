@@ -1,6 +1,6 @@
 package com.dotantai.service.impl;
 
-import java.util.ArrayList;
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,33 +28,48 @@ public class BuildingServiceImpl implements IBuildingService {
 
 	@Override
 	public List<BuildingDTO> findAll(BuildingSearchBuilder fieldSearch, Pageable pageable) {
+		Map<String, Object> properties = convertToMapProperties(fieldSearch);
+		List<BuildingEntity> buildingEntities = buildingRepository.findAll(properties, pageable, fieldSearch);
+		return buildingEntities.stream().map(item -> buildingConverter.convertToDTO(item)).collect(Collectors.toList());
+	}
 
-		/*
-		 * String where =
-		 * "AND A.name LIKE '%"+name+"%' AND A.district LIKE '%"+district+"%'";
-		 * List<BuildingDTO> results = new ArrayList<>(); List<BuildingEntity>
-		 * buildingEntities = buildingRepository.findAll(offset,limit,where); for
-		 * (BuildingEntity item : buildingEntities) { BuildingDTO buildingDTO =
-		 * buildingConverter.convertToDTO(item); results.add(buildingDTO); }
-		 */
+	/*
+	 * This method convert to Map which contains search no-sqpecial condition
+	 * 
+	 * @ fieldSeach: contains condition search
+	 * 
+	 * @ Map<String: name of condition to search, Object: value for search>
+	 */
+	private Map<String, Object> convertToMapProperties(BuildingSearchBuilder fieldSearch) {
 
 		Map<String, Object> properties = new HashMap<>();
-		properties.put("name", fieldSearch.getName());
-		properties.put("district", fieldSearch.getDistrict());
-		
-		if (StringUtils.isNotBlank(fieldSearch.getBuildingArea())) {
-			properties.put("buildingArea", Integer.parseInt(fieldSearch.getBuildingArea()));
+
+		try {
+			Field[] fields = BuildingSearchBuilder.class.getDeclaredFields();
+			for (Field field : fields) {
+				if (!field.getName().equals("buildingTypes") && !field.getName().startsWith("costRent")
+						&& !field.getName().startsWith("staffId")) {
+					field.setAccessible(true);
+					if (field.get(fieldSearch) instanceof String) {
+						if (field.getName().equals("buildingArea") || field.getName().equals("numberOfBasement")) {
+							if (StringUtils.isNotBlank((String) field.get(fieldSearch))) {
+								properties.put(field.getName().toLowerCase(),
+										Integer.parseInt((String) field.get(fieldSearch)));
+							}
+						} else {
+							properties.put(field.getName().toLowerCase(), field.get(fieldSearch));
+						}
+
+					}
+				}
+
+			}
+
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			System.out.print(e);
 		}
 
-		if (StringUtils.isNotBlank(fieldSearch.getNumberOfBasement())) {
-			properties.put("numberOfBasement", Integer.parseInt(fieldSearch.getNumberOfBasement()));
-		}
-
-		//List<BuildingEntity> buildingEntities = buildingRepository.findAll(properties, pageable);
-		List<BuildingEntity> buildingEntities = buildingRepository.findAll(properties);
-		
-		return buildingEntities.stream().map(item -> buildingConverter.convertToDTO(item)).collect(Collectors.toList());
-
+		return properties;
 	}
 
 }

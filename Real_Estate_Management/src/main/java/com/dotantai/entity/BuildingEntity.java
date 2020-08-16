@@ -48,7 +48,18 @@ public class BuildingEntity extends BaseEntity {
 	@Column(name = "overtimecost")
 	private String overtimeCost;
 	
+	@Column(name = "type")
+	private String type;
 	
+		
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 
 	public String getName() {
 		return name;

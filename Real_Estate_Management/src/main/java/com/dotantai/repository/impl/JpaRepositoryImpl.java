@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -37,9 +39,10 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 			tableName = tableClass.name();
 		}
 
-		StringBuilder sql = new StringBuilder("select * from " + tableName + " A where 1=1 ");
+		StringBuilder sql = new StringBuilder("select * from " + tableName+" A");
+		sql = sql.append(" where 1=1");
 		sql = createSQLfindAll(sql, properties);
-		if (where != null && where.length > 0) {
+		if (where != null && where.length == 1) {
 			sql.append(where[0]);
 		}
 
@@ -61,7 +64,7 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 			return resultSetMapper.mapRow(resultSet, this.zClass);
 
 		} catch (SQLException e) {
-			return null;
+			return new ArrayList<>();
 		} finally {
 
 			try {
@@ -78,7 +81,7 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 				}
 
 			} catch (SQLException e) {
-				return null;
+				return new ArrayList<>();
 			}
 
 		}
@@ -86,7 +89,8 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 	}
 
 	@Override
-	public List<T> findAll(Map<String, Object> properties,  Object... where) {
+	public List<T> findAll(Map<String, Object> properties, Object... where) {
+		// get table name to write query statement
 		String tableName = "";
 		if (zClass.isAnnotationPresent((Class<? extends Annotation>) Entity.class)
 				&& zClass.isAnnotationPresent((Class<? extends Annotation>) Table.class)) {
@@ -94,9 +98,11 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 			tableName = tableClass.name();
 		}
 
-		StringBuilder sql = new StringBuilder("select * from " + tableName + " A where 1=1 ");
+		StringBuilder sql = new StringBuilder("select * from " + tableName + " A");
+		sql.append(" WHERE 1=1");
 		sql = createSQLfindAll(sql, properties);
-		if (where != null && where.length > 0) {
+
+		if (where != null && where.length == 1) {
 			sql.append(where[0]);
 		}
 
@@ -117,7 +123,7 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 			return resultSetMapper.mapRow(resultSet, this.zClass);
 
 		} catch (SQLException e) {
-			return null;
+			return new ArrayList<>();
 		} finally {
 
 			try {
@@ -134,14 +140,14 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 				}
 
 			} catch (SQLException e) {
-				return null;
+				return new ArrayList<>();
 			}
 
 		}
 
 	}
 
-	private StringBuilder createSQLfindAll(StringBuilder where, Map<String, Object> params) {
+	protected StringBuilder createSQLfindAll(StringBuilder where, Map<String, Object> params) {
 		if (params != null && params.size() > 0) {
 			String[] keys = new String[params.size()];
 			Object[] values = new Object[params.size()];
@@ -155,19 +161,64 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 
 			for (i = 0; i < keys.length; i++) {
 				if (values[i] instanceof String && StringUtils.isNotBlank(values[i].toString())) {
-					where.append("AND LOWER(A." + keys[i].toString() + ") LIKE '%" + values[i].toString() + "%' ");
+					where.append(" AND LOWER(A." + keys[i].toString() + ") LIKE '%" + values[i].toString() + "%' ");
 
 				} else if (values[i] instanceof Integer && values[i] != null) {
-					where.append("AND LOWER(A." + keys[i].toString() + ") = " + values[i].toString() + " ");
+					where.append(" AND LOWER(A." + keys[i].toString() + ") = " + values[i].toString() + " ");
 
 				} else if (values[i] instanceof Long && values[i] != null) {
-					where.append("AND LOWER(A." + keys[i].toString() + ") = " + values[i].toString() + " ");
+					where.append(" AND LOWER(A." + keys[i].toString() + ") = " + values[i].toString() + " ");
 				}
 
 			}
 
 		}
 		return where;
+	}
+
+	@Override
+	public List<T> findAll(StringBuilder sqlSearch, Pageable pageable, Object... objects) {
+		StringBuilder sql = new StringBuilder(sqlSearch);
+		sql.append(" limit " + pageable.getOffset() + "," + pageable.getLimit());
+		ResultSetMapper<T> resultSetMapper = new ResultSetMapper<>();
+
+		Connection connection = null;
+		// PreparedStatement statement = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = EntityManagerFactory.getConnection();
+			// statement = connection.prepareStatement(sql.toString());
+			// resultSet = statement.executeQuery();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sql.toString());
+
+			return resultSetMapper.mapRow(resultSet, this.zClass);
+
+		} catch (SQLException e) {
+			return new ArrayList<>();
+		} finally {
+
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+
+				if (statement != null) {
+					statement.close();
+				}
+
+				if (resultSet != null) {
+					resultSet.close();
+				}
+
+			} catch (SQLException e) {
+				return new ArrayList<>();
+			}
+
+		}
+
 	}
 
 }

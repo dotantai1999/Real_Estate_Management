@@ -19,7 +19,7 @@ import com.dotantai.utils.FormUtil;
 import com.dotantai.utils.HttpUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebServlet(urlPatterns = { "/api-building", "/api-user", "/api-customer" })
+@WebServlet(urlPatterns = { "/api-building"})
 public class BuildingAPI extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -28,7 +28,10 @@ public class BuildingAPI extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		ObjectMapper mapper = new ObjectMapper();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,12 +41,13 @@ public class BuildingAPI extends HttpServlet {
 		response.setContentType("application/json");
 		BuildingDTO building = FormUtil.toModel(BuildingDTO.class, request);
 
-		BuildingSearchBuilder buildingSearchBuilder = new BuildingSearchBuilder.Builder()
-				.setName(building.getName())
-				.setDistrict(building.getDistrict())
-				.setBuildingArea(building.getBuildingArea())
-				.setNumberOfBasement(building.getNumberOfBasement())
-
+		BuildingSearchBuilder buildingSearchBuilder = new BuildingSearchBuilder.Builder().setName(building.getName())
+				.setDistrict(building.getDistrict()).setStreet(building.getStreet()).setWard(building.getWard())
+				.setBuildingArea(building.getBuildingArea()).setNumberOfBasement(building.getNumberOfBasement())
+				.setBuildingTypes(building.getBuildingTypes()).setAreaRentFrom(building.getAreaRentFrom())
+				.setAreaRentTo(building.getAreaRentTo()).setCostRentFrom(building.getCostRentFrom())
+				.setCostRentTo(building.getCostRentTo())
+				.setStaffId(building.getStaffId())
 				.build();
 		Pageable pageable = new PageableImpl(building.getPage(), building.getLimit());
 
