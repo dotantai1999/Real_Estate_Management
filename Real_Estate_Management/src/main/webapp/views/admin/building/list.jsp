@@ -233,21 +233,22 @@
                                     </thead>
 
                                     <tbody id="buildingList">
+                                    	<c:forEach var="item" items="${buildings}">
                                         <tr>
                                             <td class="center">
                                                 <label class="pos-rel">
-                                                    <input type="checkbox" class="ace" value="1"
-                                                        id="checkbox_building_1">
+                                                    <input type="checkbox" class="ace" value="${item.id}"
+                                                        id="checkbox_building_${item.id}">
                                                     <span class="lbl"></span>
                                                 </label>
                                             </td>
-                                            <td>Lorem ipsum dolor</td>
-                                            <td>Lorem ipsum dolor</td>
-                                            <td>Lorem ipsum dolor</td>
-                                            <td>Lorem ipsum dolor</td>
-                                            <td>Lorem ipsum dolor</td>
-                                            <td>Lorem ipsum dolor</td>
-                                            <td>Lorem ipsum dolor</td>
+                                            <td>${item.name}</td>
+                                            <td></td>
+                                            <td>${item.managerName}</td>
+                                            <td>${item.managerPhone}</td>
+                                            <td>${item.buildingArea}</td>
+                                            <td>${item.costRent}</td>
+                                            <td>${item.serviceCost}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <button class="btn btn-xs btn-success" data-toggle="tooltip"
@@ -255,13 +256,13 @@
                                                         <i class="ace-icon fa fa-eye bigger-120"></i>
                                                     </button>
 
-                                                    <button class="btn btn-xs btn-info data-toggle=" tooltip"
-                                                        title="Chỉnh sửa"">
+                                                    <button class="btn btn-xs btn-info" data-toggle="tooltip"
+                                                        title="Chỉnh sửa">
                                                         <i class=" ace-icon fa fa-edit bigger-120"></i>
                                                     </button>
 
-                                                    <button class="btn btn-xs btn-danger ata-toggle=" tooltip"
-                                                        title="Giao tòa nhà" onclick="assignmentBuilding(1)"">
+                                                    <button class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                                        title="Giao tòa nhà" onclick="assignmentBuilding(${item.id})">
                                                         <i class=" ace-icon fa fa-bars bigger-120"></i>
                                                     </button>
 
@@ -270,9 +271,10 @@
                                                         <i class="ace-icon fa fa-plus bigger-120"></i>
                                                     </button>
                                                 </div>
-
+								
                                             </td>
                                         </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
