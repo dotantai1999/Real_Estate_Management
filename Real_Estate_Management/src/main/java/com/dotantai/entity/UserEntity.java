@@ -7,14 +7,17 @@ import com.dotantai.annotation.Table;
 @Entity
 @Table(name = "user")
 public class UserEntity extends BaseEntity {
-	@Column (name = "username")
+	@Column(name = "username")
 	private String userName;
-	
-	@Column (name = "fullname")
+
+	@Column(name = "fullname")
 	private String fullName;
-	
-	@Column (name = "password")
+
+	@Column(name = "password")
 	private String password;
+
+	@Column(name = "status")
+	private int status;
 
 	public String getUserName() {
 		return userName;
@@ -39,8 +42,13 @@ public class UserEntity extends BaseEntity {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
-	
-	
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 }

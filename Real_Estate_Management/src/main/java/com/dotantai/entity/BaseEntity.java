@@ -7,7 +7,7 @@ import com.dotantai.annotation.Column;
 public class BaseEntity {
 
 	@Column(name = "id")
-	private long id;
+	private Long id;
 	
 	@Column(name = "createddate")
 	private Date createdDate;
@@ -21,12 +21,8 @@ public class BaseEntity {
 	@Column(name = "modifiedby")
 	private String modifiedBy;
 
-	public long getId() {
+	public Long getId() {
 		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public Date getCreatedDate() {

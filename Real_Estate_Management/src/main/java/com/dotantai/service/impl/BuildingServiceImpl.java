@@ -22,7 +22,7 @@ public class BuildingServiceImpl implements IBuildingService {
 	private BuildingConverter buildingConverter;
 
 	public BuildingServiceImpl() {
-		buildingRepository = (IBuildingRepository) new BuildingRepositoryImpl();
+		buildingRepository = new BuildingRepositoryImpl();
 		buildingConverter = new BuildingConverter();
 	}
 
@@ -70,6 +70,13 @@ public class BuildingServiceImpl implements IBuildingService {
 		}
 
 		return properties;
+	}
+
+	@Override
+	public BuildingDTO save(BuildingDTO buildingDTO) {
+		BuildingEntity buildingEntity = buildingConverter.convertToEntity(buildingDTO);
+		buildingEntity = buildingRepository.save(buildingEntity);
+		return buildingConverter.convertToDTO(buildingEntity);
 	}
 
 }

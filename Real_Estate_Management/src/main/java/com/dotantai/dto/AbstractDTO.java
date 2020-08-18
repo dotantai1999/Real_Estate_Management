@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class AbstractDTO<T> {
 
-	private Long id;
+	private String id;
 	private Date createdDate;
 	private Date modifiedDate;
 	private String createdBy;
@@ -61,11 +61,11 @@ public class AbstractDTO<T> {
 		this.limit = limit;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	

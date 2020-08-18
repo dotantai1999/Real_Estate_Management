@@ -21,6 +21,13 @@ public class BuildingDTO extends AbstractDTO {
 	private String areaRentFrom;
 	private String areaRentTo;
 	private String staffId;
+	private String electricityCost;
+	private String deposit;
+	private String payment;
+	private String timeRent;
+	private String timeDecorator;
+	private String managerName;
+	private String managerPhone;
 
 	public String getStaffId() {
 		return staffId;
@@ -173,5 +180,63 @@ public class BuildingDTO extends AbstractDTO {
 	public void setOvertimeCost(String overtimeCost) {
 		this.overtimeCost = overtimeCost;
 	}
+
+	public String getElectricityCost() {
+		return electricityCost;
+	}
+
+	public void setElectricityCost(String electricityCost) {
+		this.electricityCost = electricityCost;
+	}
+
+	public String getDeposit() {
+		return deposit;
+	}
+
+	public void setDeposit(String deposit) {
+		this.deposit = deposit;
+	}
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+
+	public String getTimeRent() {
+		return timeRent;
+	}
+
+	public void setTimeRent(String timeRent) {
+		this.timeRent = timeRent;
+	}
+
+	public String getTimeDecorator() {
+		return timeDecorator;
+	}
+
+	public void setTimeDecorator(String timeDecorator) {
+		this.timeDecorator = timeDecorator;
+	}
+
+	public String getManagerName() {
+		return managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+
+	public String getManagerPhone() {
+		return managerPhone;
+	}
+
+	public void setManagerPhone(String managerPhone) {
+		this.managerPhone = managerPhone;
+	}
+	
+	
 
 }

@@ -1,36 +1,41 @@
 package com.dotantai.dto;
 
 public class UserDTO {
-	private String username;
+	private String userName;
 	private String password;
-	private String fullname;
-	private int status;
-	
-	public String getUsername() {
-		return username;
+	private String fullName;
+	private String status;
+
+	public String getUserName() {
+		return userName;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
+
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getFullname() {
-		return fullname;
+
+	public String getFullName() {
+		return fullName;
 	}
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
-	public int getStatus() {
+
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+
+	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
-	
+
 }

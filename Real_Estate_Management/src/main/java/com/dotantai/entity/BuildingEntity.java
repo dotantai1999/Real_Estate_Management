@@ -9,49 +9,69 @@ import com.dotantai.annotation.Table;
 @Entity
 @Table(name = "building")
 public class BuildingEntity extends BaseEntity {
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "numberofbasement")
 	private Integer numberOfBasement;
-	
+
 	@Column(name = "buildingarea")
 	private Integer buildingArea;
-	
+
 	@Column(name = "street")
 	private String street;
-	
+
 	@Column(name = "ward")
 	private String ward;
-	
+
 	@Column(name = "district")
 	private String district;
-	
+
 	@Column(name = "structure")
 	private String structure;
-	
+
 	@Column(name = "costrent")
 	private Integer costRent;
-	
+
 	@Column(name = "costdescription")
 	private String costDescription;
-	
+
 	@Column(name = "servicecost")
 	private String serviceCost;
-	
+
 	@Column(name = "carcost")
 	private String carCost;
-	
+
 	@Column(name = "motorbikecost")
 	private String motorbikeCost;
-	
+
 	@Column(name = "overtimecost")
 	private String overtimeCost;
-	
+
 	@Column(name = "type")
 	private String type;
-	
-		
+
+	@Column(name = "electricitycost")
+	private String electricityCost;
+
+	@Column(name = "deposit")
+	private String deposit;
+
+	@Column(name = "payment")
+	private String payment;
+
+	@Column(name = "timerent")
+	private String timeRent;
+
+	@Column(name = "timedecorator")
+	private String timeDecorator;
+
+	@Column(name = "managername")
+	private String managerName;
+
+	@Column(name = "managerphone")
+	private String managerPhone;
 
 	public String getType() {
 		return type;
@@ -165,7 +185,60 @@ public class BuildingEntity extends BaseEntity {
 		this.overtimeCost = overtimeCost;
 	}
 
+	public String getElectricityCost() {
+		return electricityCost;
+	}
 
-	
-	
+	public void setElectricityCost(String electricityCost) {
+		this.electricityCost = electricityCost;
+	}
+
+	public String getDeposit() {
+		return deposit;
+	}
+
+	public void setDeposit(String deposit) {
+		this.deposit = deposit;
+	}
+
+	public String getPayment() {
+		return payment;
+	}
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+
+	public String getTimeRent() {
+		return timeRent;
+	}
+
+	public void setTimeRent(String timeRent) {
+		this.timeRent = timeRent;
+	}
+
+	public String getTimeDecorator() {
+		return timeDecorator;
+	}
+
+	public void setTimeDecorator(String timeDecorator) {
+		this.timeDecorator = timeDecorator;
+	}
+
+	public String getManagerName() {
+		return managerName;
+	}
+
+	public void setManagerName(String managerName) {
+		this.managerName = managerName;
+	}
+
+	public String getManagerPhone() {
+		return managerPhone;
+	}
+
+	public void setManagerPhone(String managerPhone) {
+		this.managerPhone = managerPhone;
+	}
+
 }
