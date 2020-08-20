@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"%>
 
 <%@include file="/common/taglib.jsp" %>
-<c:url var="buildingURL" value="/admin-building?action=EDIT" />
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Edit Building</title>
+    <title>View Building</title>
 </head>
 
 <body>
@@ -36,43 +36,40 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${buildingURL}">
+                        <form class="form-horizontal" id="formEdit" role="form" method="POST"
+                            action="${buildingApiURL}">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="name"> Tên tòa
                                     nhà
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.name}" type="text" id="name" name="name"
-                                        class="col-xs-10 col-sm-5" />
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.name}
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="district"> Quận
                                 </label>
                                 <div class="col-sm-9">
-                                    <select name="district" id="district" class="chosen-select">
-                                        <option value="" selected disabled>Chọn quận</option>
-                                        <option value="QUAN_1">1</option>
-                                        <option value="QUAN_2">2</option>
-                                        <option value="QUAN_3">3</option>
-                                        <option value="QUAN_4">4</option>
-                                    </select>
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.district}</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="ward"> Phường
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.ward}" type="text" id="ward" name="ward"
-                                        class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.ward}</div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="street"> Đường
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.street}" type="text" id="street" name="street"
-                                        class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.street}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -80,8 +77,8 @@
                                     tầng hầm
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.numberOfBasement}" type="number" id="numberOfBasement"
-                                        name="numberOfBasement" class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.numberOfBasement}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -89,20 +86,8 @@
                                     nhà
                                 </label>
                                 <div class="col-sm-9">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="buildingTypes" name="buildingTypes"
-                                            value="TANG_TRET">
-                                        Tầng trệt
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="buildingTypes" name="buildingTypes"
-                                            value="NGUYEN_CAN">
-                                        Nguyên căn
-                                    </label>
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" id="buildingTypes" name="buildingTypes" value="NOI_THAT">
-                                        Nội thất
-                                    </label>
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.numberOfBasement}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -110,8 +95,8 @@
                                     Diện tích thuê
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.buildingArea}" type="number" id="areaRent"
-                                        name="buildingArea" class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.buildingArea}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -119,8 +104,8 @@
                                     Giá thuê
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.costRent}" type="number" id="costRent" name="costRent"
-                                        class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.costRent}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -128,8 +113,8 @@
                                     Mô tả giá
                                 </label>
                                 <div class="col-sm-9">
-                                    <textarea rows="4" id="costDescription" name="costDescription"
-                                        class="col-xs-10 col-sm-5">${building.costDescription}</textarea>
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.costDescription}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -137,8 +122,8 @@
                                     Phí dịch vụ
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.serviceCost}" type="text" id="serviceCost"
-                                        name="serviceCost" class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.serviceCost}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -146,8 +131,8 @@
                                     Phí ô tô
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.carCost}" type="text" id="carCost" name="carCost"
-                                        class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.carCost}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -155,8 +140,8 @@
                                     Phí mô tô
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.motorbikeCost}" type="text" id="motorbikeCost"
-                                        name="motorbikeCost" class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.motorbikeCost}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -164,8 +149,8 @@
                                     Phí ngoài giờ
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.overtimeCost}" type="text" id="overtimeCost"
-                                        name="overtimeCost" class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.overtimeCost}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -173,8 +158,8 @@
                                     Tiền điện
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.electricityCost}" type="text" id="electricityCost"
-                                        name="electricityCost" class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.electricityCost}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -182,8 +167,8 @@
                                     Đặt cọc
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.deposit}" type="text" id="deposit" name="deposit"
-                                        class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.deposit}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -191,8 +176,8 @@
                                     Thanh toán
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.payment}" type="text" id="payment" name="payment"
-                                        class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.payment}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -200,8 +185,8 @@
                                     Thời hạn thuê
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.timeRent}" type="text" id="timeRent" name="timeRent"
-                                        class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.timeRent}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -209,8 +194,8 @@
                                     Thời gian trang trí
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${building.timeDecorator}" type="text" id="timeDecorator"
-                                        name="timeDecorator" class="col-xs-10 col-sm-5">
+                                    <div class="col-xs-10 col-sm-5 control-label" style="text-align: center;">
+                                        ${building.timeDecorator}</div>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -218,9 +203,7 @@
 
                                 </label>
                                 <div class="col-sm-9">
-                                    <button type="submit" class="btn btn-primary">Cập nhật tòa
-                                        nhà</button>
-                                    <button type="button" class="btn btn-danger">Hủy</button>
+
                                 </div>
                             </div>
                         </form>

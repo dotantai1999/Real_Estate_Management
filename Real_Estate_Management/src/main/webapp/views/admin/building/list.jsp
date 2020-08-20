@@ -3,6 +3,7 @@
 
 <%@include file="/common/taglib.jsp" %>
 <c:url var="buildingURL" value="/admin-building" />
+
 <!DOCTYPE html>
 <html>
 
@@ -210,7 +211,7 @@
                                     <div class="dt-buttons btn-overlap btn-group">
                                         <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
                                             data-toggle="tooltip" title="Thêm"
-                                            href="<c:url value='/admin-building?action=EDIT'/>">
+                                            href="<c:url value='/admin-building?action=ADD'/>">
                                             <i class="fa fa-plus-circle bigger-110 blue" aria-hidden="true"></i>
                                         </a>
                                         <button
@@ -259,7 +260,7 @@
                                                 </label>
                                             </td>
                                             <td>${item.name}</td>
-                                            <td></td>
+                                            <td>${item.id}</td>
                                             <td>${item.managerName}</td>
                                             <td>${item.managerPhone}</td>
                                             <td>${item.buildingArea}</td>
@@ -267,15 +268,17 @@
                                             <td>${item.serviceCost}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
-                                                    <button class="btn btn-xs btn-success" data-toggle="tooltip"
-                                                        title="Xem chi tiết">
+                                                    <a class="btn btn-xs btn-success" data-toggle="tooltip"
+                                                        title="Xem chi tiết"
+                                                        href="admin-building?action=VIEW&id=${item.id}">
                                                         <i class="ace-icon fa fa-eye bigger-120"></i>
-                                                    </button>
+                                                    </a>
 
-                                                    <button class="btn btn-xs btn-info" data-toggle="tooltip"
-                                                        title="Chỉnh sửa">
+                                                    <a class="btn btn-xs btn-info" data-toggle="tooltip"
+                                                        title="Chỉnh sửa"
+                                                        href="<c:url value='/admin-building?action=EDIT&id=${item.id}'/>">
                                                         <i class=" ace-icon fa fa-edit bigger-120"></i>
-                                                    </button>
+                                                    </a>
 
                                                     <button class="btn btn-xs btn-danger" data-toggle="tooltip"
                                                         title="Giao tòa nhà" onclick="assignmentBuilding(${item.id})">

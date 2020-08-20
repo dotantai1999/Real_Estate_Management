@@ -46,6 +46,10 @@ public class BuildingController extends HttpServlet {
 			url = "/views/admin/building/list.jsp";
 		} else if (action != null && action.equals("EDIT")) {
 			url="/views/admin/building/edit.jsp";
+		} else if (action != null && action.equals("ADD")) {
+			url="/views/admin/building/add.jsp";
+		} else if (action != null && action.equals("VIEW")) {
+			url="/views/admin/building/view.jsp";
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
@@ -54,9 +58,14 @@ public class BuildingController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		BuildingDTO buildingDTO = FormUtil.toModel(BuildingDTO.class, request);
-		buildingDTO = buildingService.save(buildingDTO);
-		response.sendRedirect("admin-building?action=LIST");
+		String action = request.getParameter("action");
+		if (action != null && action.equals("ADD")) {
+			BuildingDTO buildingDTO = FormUtil.toModel(BuildingDTO.class, request);
+			buildingDTO = buildingService.save(buildingDTO);
+			response.sendRedirect("admin-building?action=LIST");			
+		} else if (action != null && action.equals("EDIT")) {
+			
+		}
 	}
 	
 }
