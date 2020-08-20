@@ -270,7 +270,7 @@
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a class="btn btn-xs btn-success" data-toggle="tooltip"
                                                         title="Xem chi tiết"
-                                                        href="admin-building?action=VIEW&id=${item.id}">
+                                                        href="<c:url value='/admin-building?action=VIEW&id=${item.id}'/>">
                                                         <i class="ace-icon fa fa-eye bigger-120"></i>
                                                     </a>
 

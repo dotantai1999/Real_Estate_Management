@@ -45,11 +45,21 @@ public class BuildingController extends HttpServlet {
 			request.setAttribute("buildings", buildings);
 			url = "/views/admin/building/list.jsp";
 		} else if (action != null && action.equals("EDIT")) {
+			// Front end gui id cua building can sua thong qua url params
+			// Xu ly
+			// Tra ve trang edit.jsp voi thong tin building truyen vao (ten bien truyen vao la building)
 			url="/views/admin/building/edit.jsp";
 		} else if (action != null && action.equals("ADD")) {
 			url="/views/admin/building/add.jsp";
 		} else if (action != null && action.equals("VIEW")) {
+			// Front end gui id cua building can xem thong qua url params
+			// Xu ly
+			// Tra ve trang view.jsp voi thong tin building truyen vao (ten bien truyen vao la building)
 			url="/views/admin/building/view.jsp";
+		} else if (action != null && action.equals("DELETE")) {
+			// Front end gui file json: keys = buildingIds, value  = array id 
+			// Xu ly
+			// Dieu huong ve lai trang action=LIST (GET)
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
@@ -64,7 +74,9 @@ public class BuildingController extends HttpServlet {
 			buildingDTO = buildingService.save(buildingDTO);
 			response.sendRedirect("admin-building?action=LIST");			
 		} else if (action != null && action.equals("EDIT")) {
-			
+			// Front End gui req POST EDIT voi thong tin la form-data building duoc cap nhat
+			// Xu ly
+			// Dieu huong ve lai trang action=EDIT (GET)
 		}
 	}
 	
