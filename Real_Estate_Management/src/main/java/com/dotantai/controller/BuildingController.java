@@ -55,7 +55,7 @@ public class BuildingController extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		BuildingDTO buildingDTO = FormUtil.toModel(BuildingDTO.class, request);
-		buildingDTO = buildingService.save(buildingDTO);
+		buildingDTO = buildingService.insert((buildingDTO));
 		response.sendRedirect("admin-building?action=LIST");
 	}
 	

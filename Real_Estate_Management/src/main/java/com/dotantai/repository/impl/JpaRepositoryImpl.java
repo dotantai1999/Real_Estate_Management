@@ -50,7 +50,7 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 			sql.append(where[0]);
 		}
 
-		if(pageable.getOffset() != null && pageable.getLimit() != null) {
+		if (pageable.getOffset() != null && pageable.getLimit() != null) {
 			sql.append(" limit " + pageable.getOffset() + "," + pageable.getLimit());
 		}
 		ResultSetMapper<T> resultSetMapper = new ResultSetMapper<>();
@@ -185,10 +185,10 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 	@Override
 	public List<T> findAll(StringBuilder sqlSearch, Pageable pageable, Object... objects) {
 		StringBuilder sql = new StringBuilder(sqlSearch);
-		if(pageable.getOffset() != null && pageable.getLimit() != null) {
+		if (pageable.getOffset() != null && pageable.getLimit() != null) {
 			sql.append(" limit " + pageable.getOffset() + "," + pageable.getLimit());
 		}
-		
+
 		ResultSetMapper<T> resultSetMapper = new ResultSetMapper<>();
 
 		Connection connection = null;
@@ -256,9 +256,9 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 				int index = i + 1;
 				Field field = fields[i];
 				field.setAccessible(true);
-				statement.setObject(1, field.get(object));
+				statement.setObject(index, field.get(object));
 			}
-			
+
 			Class<?> parentClass = aClass.getSuperclass();
 			int indexParent = fields.length + 1;
 			while (parentClass != null) {
@@ -269,6 +269,7 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 					statement.setObject(indexParent, field.get(object));
 					indexParent++;
 				}
+				parentClass = parentClass.getSuperclass();
 			}
 
 			// excute query
@@ -335,27 +336,27 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 			}
 
 		}
-		
+
 		Class<?> parentClass = zClass.getSuperclass();
 		while (parentClass != null) {
-			for(Field field : parentClass.getDeclaredFields()) {
+			for (Field field : parentClass.getDeclaredFields()) {
 				if (fields.length() > 1) {
 					fields.append(",");
 					params.append(",");
 				}
-				
-				if(field.isAnnotationPresent(Column.class)) {
+
+				if (field.isAnnotationPresent(Column.class)) {
 					Column column = field.getAnnotation(Column.class);
 					fields.append(column.name());
 					params.append("?");
 				}
 			}
+
+			parentClass = parentClass.getSuperclass();
 		}
 
 		String sql = "INSERT INTO " + tableName + "(" + fields.toString() + ") VALUES (" + params.toString() + ")";
 		return sql;
 	}
-	
-
 
 }

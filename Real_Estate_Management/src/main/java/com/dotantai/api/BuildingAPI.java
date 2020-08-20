@@ -32,7 +32,7 @@ public class BuildingAPI extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 		BuildingDTO buildingDTO = HttpUtil.of(request.getReader()).toModel(BuildingDTO.class);
-		buildingDTO = buildingService.save(buildingDTO);
+		buildingDTO = buildingService.insert(buildingDTO);
 		mapper.writeValue(response.getOutputStream(), buildingDTO);
 	
 	}

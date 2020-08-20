@@ -22,7 +22,7 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public UserDTO save(UserDTO userDTO) {
 		UserEntity userEntity = userConverter.convertToEntity(userDTO);
-		userEntity = userRepository.save(userEntity);
+		Long id = userRepository.insert(userEntity);
 		return userConverter.convertToDTO(userEntity) ;
 	}
 
