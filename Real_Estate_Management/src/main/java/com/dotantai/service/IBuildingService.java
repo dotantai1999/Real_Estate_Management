@@ -9,6 +9,6 @@ import com.dotantai.paging.Pageable;
 
 public interface IBuildingService {
 	List<BuildingDTO> findAll(BuildingSearchBuilder fieldSearch, Pageable pageable);
-	BuildingDTO save(BuildingDTO buildingDTO);
+	BuildingDTO insert(BuildingDTO buildingDTO);
 
 }
