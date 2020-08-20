@@ -46,7 +46,9 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 			sql.append(where[0]);
 		}
 
-		sql.append(" limit " + pageable.getOffset() + "," + pageable.getLimit());
+		if(pageable.getOffset() != null && pageable.getLimit() != null) {
+			sql.append(" limit " + pageable.getOffset() + "," + pageable.getLimit());
+		}
 		ResultSetMapper<T> resultSetMapper = new ResultSetMapper<>();
 
 		Connection connection = null;
@@ -179,7 +181,10 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 	@Override
 	public List<T> findAll(StringBuilder sqlSearch, Pageable pageable, Object... objects) {
 		StringBuilder sql = new StringBuilder(sqlSearch);
-		sql.append(" limit " + pageable.getOffset() + "," + pageable.getLimit());
+		if(pageable.getOffset() != null && pageable.getLimit() != null) {
+			sql.append(" limit " + pageable.getOffset() + "," + pageable.getLimit());
+		}
+		
 		ResultSetMapper<T> resultSetMapper = new ResultSetMapper<>();
 
 		Connection connection = null;
