@@ -80,16 +80,6 @@
             </ul>
         </li>
         <li class="">
-            <a href="<c:url value='/admin-building/priority-list' />">
-                <i class="menu-icon fa fa-list"></i>
-                <span class="menu-text">
-                    DS Tòa Nhà Ưu Tiên
-                </span>
-            </a>
-
-            <b class="arrow"></b>
-        </li>
-        <li class="">
             <a href="#" class="dropdown-toggle">
                 <i class="menu-icon fa fa-users"></i>
                 <span class="menu-text">
@@ -110,6 +100,16 @@
 
                 </li>
             </ul>
+        </li>
+        <li class="">
+            <a href="<c:url value='/admin-building/priority-list' />">
+                <i class="menu-icon fa fa-list"></i>
+                <span class="menu-text">
+                    DS Tòa Nhà Ưu Tiên
+                </span>
+            </a>
+
+            <b class="arrow"></b>
         </li>
     </ul>
 
