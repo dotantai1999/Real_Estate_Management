@@ -41,8 +41,8 @@
     <ul class="nav nav-list">
         <li class="active">
             <a href="<c:url value='/admin-building?action=LIST' />" class="dropdown-toggle">
-                <i class="menu-icon fa fa-tachometer"></i>
-                <span class="menu-text"> Quản Lý Tòa Nhà </span>
+                <i class="menu-icon fa fa-building"></i>
+                <span class="menu-text"> QL Tòa Nhà </span>
                 <b class="arrow fa fa-angle-down"></b>
             </a>
 
@@ -58,9 +58,9 @@
         </li>
         <li class="">
             <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-desktop"></i>
+                <i class="menu-icon fa fa-user"></i>
                 <span class="menu-text">
-                    Quản lý khách hàng
+                    QL Khách Hàng
                 </span>
 
                 <b class="arrow fa fa-angle-down"></b>
@@ -72,80 +72,44 @@
                 <li class="">
                     <a href="#" class="dropdown-toggle">
                         <i class="menu-icon fa fa-caret-right"></i>
-
-                        Layouts
-                        <b class="arrow fa fa-angle-down"></b>
+                        Danh sách khách hàng
                     </a>
 
                     <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="top-menu.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Top Menu
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Two Menus 1
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="two-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Two Menus 2
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="mobile-menu-1.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Default Mobile Menu
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="mobile-menu-2.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Mobile Menu 2
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            <a href="mobile-menu-3.html">
-                                <i class="menu-icon fa fa-caret-right"></i>
-                                Mobile Menu 3
-                            </a>
-
-                            <b class="arrow"></b>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </li>
         <li class="">
             <a href="<c:url value='/admin-building/priority-list' />">
-                <i class="menu-icon fa fa-desktop"></i>
+                <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">
                     DS Tòa Nhà Ưu Tiên
                 </span>
             </a>
 
             <b class="arrow"></b>
+        </li>
+        <li class="">
+            <a href="#" class="dropdown-toggle">
+                <i class="menu-icon fa fa-users"></i>
+                <span class="menu-text">
+                    QL Người Dùng
+                </span>
+
+                <b class="arrow fa fa-angle-down "></b>
+            </a>
+
+            <b class="arrow"></b>
+
+            <ul class="submenu nav-hide" style="display: none;">
+                <li class="">
+                    <a href="<c:url value='/admin-user?action=LIST'/>">
+                        <i class="menu-icon fa fa-caret-right"></i>
+                        Danh sách người dùng
+                    </a>
+
+                </li>
+            </ul>
         </li>
     </ul>
 

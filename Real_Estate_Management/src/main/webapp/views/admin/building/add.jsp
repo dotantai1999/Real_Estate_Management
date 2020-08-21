@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Edit Building</title>
+    <title>Add Building</title>
 </head>
 
 <body>
@@ -25,15 +25,6 @@
             </div>
 
             <div class="page-content">
-                <div class="page-header">
-                    <h1>
-                        Dashboard
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            overview &amp; stats
-                        </small>
-                    </h1>
-                </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${buildingURL}">

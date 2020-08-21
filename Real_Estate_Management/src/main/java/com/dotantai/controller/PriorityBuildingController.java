@@ -18,7 +18,7 @@ public class PriorityBuildingController extends HttpServlet {
 			throws ServletException, IOException {
 		// Lay ds building uu tien -> luu vao variable buildings -> truyen vao file jsp
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/views/admin/priorityList.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/views/admin/building/priorityList.jsp");
 		rd.forward(request, response);
 	}
 	
