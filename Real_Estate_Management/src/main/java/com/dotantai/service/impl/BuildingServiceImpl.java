@@ -78,5 +78,9 @@ public class BuildingServiceImpl implements IBuildingService {
 		Long id = buildingRepository.insert(buildingEntity);
 		return buildingConverter.convertToDTO(buildingEntity);
 	}
+	
+	public void update(BuildingDTO buildingDTO);
+	public boolean delete(BuildingDTO buildingDTO);
+	public BuildingDTO findById(long id);
 
 }
