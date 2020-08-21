@@ -70,7 +70,7 @@
 
             <ul class="submenu nav-hide" style="display: none;">
                 <li class="">
-                    <a href="#" class="dropdown-toggle">
+                    <a href="<c:url value='/admin-customer?action=LIST' />">
                         <i class="menu-icon fa fa-caret-right"></i>
                         Danh sách khách hàng
                     </a>

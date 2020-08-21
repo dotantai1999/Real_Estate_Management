@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"%>
 
 <%@include file="/common/taglib.jsp" %>
-<c:url var="userURL" value="/admin-user?action=EDIT" />
+<c:url var="customerURL" value="/admin-customer?action=ADD" />
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Edit User</title>
+    <title>Add Customer</title>
 </head>
 
 <body>
@@ -27,33 +27,34 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2 class="header blue text-center">Chỉnh sửa người dùng </h2>                    
-                        <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${userURL}">
+                        <h2 class="header blue text-center">Thêm khách hàng </h2>
+                        <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${customerURL}">
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="role"> Vai trò
+                                <label class="col-sm-3 control-label no-padding-right" for="name"> Tên đầy đủ
                                 </label>
                                 <div class="col-sm-9">
-                                    <select name="role" id="role" class="chosen-select">
-                                        <option value="" selected disabled>Chọn vai trò</option>
-                                        <option value="">Người dùng</option>
-                                        <option value="">Quản lý</option>
-                                    </select>
+                                    <input type="text" id="name" name="name" class="col-xs-10 col-sm-5" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="userName"> Tên đăng nhập
+                                <label class="col-sm-3 control-label no-padding-right" for="company"> Tên công ty
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${user.userName}" type="text" id="userName" name="userName"
-                                        class="col-xs-10 col-sm-5">
+                                    <input type="text" id="company" name="company" class="col-xs-10 col-sm-5" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="fullName"> Họ và Tên
+                                <label class="col-sm-3 control-label no-padding-right" for="demand"> Nhu cầu
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${user.fullName}" type="text" id="fullName" name="fullName"
-                                        class="col-xs-10 col-sm-5">
+                                    <input type="text" id="demand" name="demand" class="col-xs-10 col-sm-5" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label no-padding-right" for="note"> Ghi chú
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="note" name="note" class="col-xs-10 col-sm-5" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -61,8 +62,8 @@
 
                                 </label>
                                 <div class="col-sm-9">
-                                    <button type="submit" class="btn btn-primary">Cập nhật người dùng</button>
-                                    <button type="button" class="btn btn-danger">Reset mật khẩu</button>
+                                    <button type="submit" class="btn btn-primary" id="btnAddBuilding">Thêm khách
+                                        hàng</button>
                                 </div>
                             </div>
                         </form>

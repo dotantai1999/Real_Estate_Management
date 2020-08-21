@@ -27,6 +27,7 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
+                       <h2 class="header blue text-center">Xem chi tiết tòa nhà </h2>
                         <form class="form-horizontal" id="formEdit" role="form" method="POST"
                             action="${buildingApiURL}">
                             <div class="form-group">

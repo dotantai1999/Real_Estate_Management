@@ -27,6 +27,7 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
+                        <h2 class="header blue text-center">Chỉnh sửa tòa nhà </h2>
                         <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${buildingURL}">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="name"> Tên tòa
