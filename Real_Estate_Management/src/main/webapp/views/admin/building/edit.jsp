@@ -25,17 +25,9 @@
             </div>
 
             <div class="page-content">
-                <div class="page-header">
-                    <h1>
-                        Dashboard
-                        <small>
-                            <i class="ace-icon fa fa-angle-double-right"></i>
-                            overview &amp; stats
-                        </small>
-                    </h1>
-                </div>
                 <div class="row">
                     <div class="col-xs-12">
+                        <h2 class="header blue text-center">Chỉnh sửa tòa nhà </h2>
                         <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${buildingURL}">
                         	<input type="hidden" value = "${building.id}" name = "id">
                             <div class="form-group">

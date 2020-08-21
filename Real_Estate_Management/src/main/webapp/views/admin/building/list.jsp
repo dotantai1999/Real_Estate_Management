@@ -26,7 +26,7 @@
             </div>
 
             <div class="page-content">
-                <div class="page-header">
+                <!-- <div class="page-header">
                     <h1>
                         Dashboard
                         <small>
@@ -34,7 +34,7 @@
                             overview &amp; stats
                         </small>
                     </h1>
-                </div>
+                </div> -->
 
                 <!-- Main Content -->
                 <div class="row">
@@ -203,7 +203,7 @@
                     <!-- Building Table -->
                     <div class="row">
                         <div class="col-xs-12">
-                            <h2 class="header lighter blue text-center margin-top-md">Danh sách tòa nhà</h2>
+                            <h2 class="header blue text-center margin-top-md">Danh sách tòa nhà</h2>
 
                             <!-- Buttons -->
                             <div class="clearfix">
