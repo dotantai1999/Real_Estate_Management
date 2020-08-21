@@ -37,6 +37,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${buildingURL}">
+                        	<input type="hidden" value = "${building.id}" name = "id">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="name"> Tên tòa
                                     nhà

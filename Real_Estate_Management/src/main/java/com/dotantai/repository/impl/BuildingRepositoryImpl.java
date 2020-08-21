@@ -87,12 +87,13 @@ public class BuildingRepositoryImpl extends JpaRepositoryImpl<BuildingEntity> im
 
 	public void update(BuildingEntity buildingEntity) {
 		StringBuilder sql = new StringBuilder("");
-		sql.append("update building");
-		sql.append(" name = ?, numberofbasement = ?, buildingarea = ?, district = ?, ward = ?,");
+		sql.append("update building set");
+		sql.append(" id = ?, name = ?, numberofbasement = ?, buildingarea = ?, district = ?, ward = ?,");
 		sql.append(" street = ?, structure = ?, costrent = ?, costdescription = ?, servicecost = ?,");
 		sql.append(" carcost = ?, motorbikecost = ?, overtimecost = ?, electricitycost = ?, deposit = ?,");
-		sql.append(" payment = ?, timerent = ?, timedecorator = ?, type = ?, createddate = ?, modifieddate = ?");
+		sql.append(" payment = ?, timerent = ?, timedecorator = ?, type = ?, createddate = ?, modifieddate = ?,");
 		sql.append(" createdby = ?, modifiedby = ?");
+		sql.append(" where id = ?");
 
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -107,6 +108,7 @@ public class BuildingRepositoryImpl extends JpaRepositoryImpl<BuildingEntity> im
 
 			// create statement
 			statement = connection.prepareStatement(sql.toString());
+			
 
 			// set param
 			Field[] fields = (BuildingEntity.class).getDeclaredFields();
@@ -116,6 +118,8 @@ public class BuildingRepositoryImpl extends JpaRepositoryImpl<BuildingEntity> im
 				field.setAccessible(true);
 				statement.setObject(index, field.get(buildingEntity));
 			}
+			statement.setLong(25, (Long)fields[0].get(buildingEntity));
+			
 
 			Class<?> parentClass = (BuildingEntity.class).getSuperclass();
 			int indexParent = fields.length + 1;
@@ -210,7 +214,7 @@ public class BuildingRepositoryImpl extends JpaRepositoryImpl<BuildingEntity> im
 	}
 
 	public BuildingEntity findById(Long id) {
-		StringBuilder sql = new StringBuilder("delete from building where id = "+id);
+		StringBuilder sql = new StringBuilder("select * from building where id = "+id);
 		BuildingEntity buildingEntity = new BuildingEntity();
 		
 		Connection connection = null;
@@ -221,17 +225,15 @@ public class BuildingRepositoryImpl extends JpaRepositoryImpl<BuildingEntity> im
 			// connect with DB
 			connection = EntityManagerFactory.getConnection();
 
-			// dont commit when occur error and callback (transaction)
-			connection.setAutoCommit(false);
-
 			// create statement
 			statement = connection.prepareStatement(sql.toString());
 
 
 			// excute query
-			statement.executeUpdate();
+			resultSet = statement.executeQuery();
 			
-			connection.commit();
+
+
 			
 			while (resultSet.next()) {
 				Field[] fields = (BuildingEntity.class).getDeclaredFields();

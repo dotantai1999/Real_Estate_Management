@@ -66,13 +66,13 @@ $('#deleteBuilding').click(function (e) {
 
     data.buildingIds = buildingIds;
     console.log(data);
-    //deleteBuilding(data);
+    deleteBuilding(data);
 });
 
 function deleteBuilding(data) {
     $.ajax({
-        type: 'POST',
-        url: '',
+        type: 'GET',
+        url: 'http://localhost:8080/Real_Estate_Management/admin-building?action=DELETE',
         data: JSON.stringify(data), // Du lieu gui di
         dataType: 'json', // Dinh nghia kieu du lieu tra ve tu server
         contentType: 'application/json', // Dinh nghia kieu du lieu gui di

@@ -73,9 +73,23 @@ public class BuildingServiceImpl implements IBuildingService {
 	}
 
 	@Override
-	public BuildingDTO insert(BuildingDTO buildingDTO) {
+	public Long insert(BuildingDTO buildingDTO) {
 		BuildingEntity buildingEntity = buildingConverter.convertToEntity(buildingDTO);
 		Long id = buildingRepository.insert(buildingEntity);
+		return id;
+	}
+	
+	public void update(BuildingDTO buildingDTO) {
+		BuildingEntity buildingEntity = buildingConverter.convertToEntity(buildingDTO);
+		buildingRepository.update(buildingEntity);
+	}
+	
+	public boolean delete(Long id) {
+		return buildingRepository.delete(id);
+	}
+	
+	public BuildingDTO findById(Long id) {
+		BuildingEntity buildingEntity = buildingRepository.findById(id);
 		return buildingConverter.convertToDTO(buildingEntity);
 	}
 
