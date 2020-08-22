@@ -37,4 +37,10 @@ public class UserServiceImpl implements IUserService {
 		return result1;
 	}
 
+	@Override
+	public boolean checkAccount(String userName, String password) {
+		return userRepository.checkAccount(userName, password);
+
+	}
+
 }
