@@ -93,8 +93,4 @@ public class BuildingServiceImpl implements IBuildingService {
 		return buildingConverter.convertToDTO(buildingEntity);
 	}
 	
-	public void update(BuildingDTO buildingDTO);
-	public boolean delete(BuildingDTO buildingDTO);
-	public BuildingDTO findById(long id);
-
 }

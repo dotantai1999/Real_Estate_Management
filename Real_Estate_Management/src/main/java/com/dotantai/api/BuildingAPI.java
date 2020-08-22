@@ -37,24 +37,34 @@ public class BuildingAPI extends HttpServlet {
 	 * 
 	 * }
 	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		BuildingDTO building = FormUtil.toModel(BuildingDTO.class, request);
-
-		BuildingSearchBuilder buildingSearchBuilder = new BuildingSearchBuilder.Builder().setName(building.getName())
-				.setDistrict(building.getDistrict()).setStreet(building.getStreet()).setWard(building.getWard())
-				.setBuildingArea(building.getBuildingArea()).setNumberOfBasement(building.getNumberOfBasement())
-				.setBuildingTypes(building.getBuildingTypes()).setAreaRentFrom(building.getAreaRentFrom())
-				.setAreaRentTo(building.getAreaRentTo()).setCostRentFrom(building.getCostRentFrom())
-				.setCostRentTo(building.getCostRentTo()).setStaffId(building.getStaffId()).build();
-		Pageable pageable = new PageableImpl(building.getPage(), building.getLimit());
-
-		List<BuildingDTO> buildings = buildingService.findAll(buildingSearchBuilder, pageable);
-
-		mapper.writeValue(response.getOutputStream(), buildings);
+		/*
+		 * ObjectMapper mapper = new ObjectMapper();
+		 * request.setCharacterEncoding("UTF-8");
+		 * response.setContentType("application/json"); BuildingDTO building =
+		 * FormUtil.toModel(BuildingDTO.class, request);
+		 * 
+		 * BuildingSearchBuilder buildingSearchBuilder = new
+		 * BuildingSearchBuilder.Builder().setName(building.getName())
+		 * .setDistrict(building.getDistrict()).setStreet(building.getStreet()).setWard(
+		 * building.getWard())
+		 * .setBuildingArea(building.getBuildingArea()).setNumberOfBasement(building.
+		 * getNumberOfBasement())
+		 * .setBuildingTypes(building.getBuildingTypes()).setAreaRentFrom(building.
+		 * getAreaRentFrom())
+		 * .setAreaRentTo(building.getAreaRentTo()).setCostRentFrom(building.
+		 * getCostRentFrom())
+		 * .setCostRentTo(building.getCostRentTo()).setStaffId(building.getStaffId()).
+		 * build(); Pageable pageable = new PageableImpl(building.getPage(),
+		 * building.getLimit());
+		 * 
+		 * List<BuildingDTO> buildings = buildingService.findAll(buildingSearchBuilder,
+		 * pageable);
+		 * 
+		 * mapper.writeValue(response.getOutputStream(), buildings);
+		 */
 
 	}
 

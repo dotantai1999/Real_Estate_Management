@@ -16,6 +16,23 @@ public class LoginController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//get username and password from form
+		
+		
+		//check (count)
+		
+		
+		//save in session
+		
+		
+		//
+		
+		
+		
+		
+		
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/login/login.jsp");
 		rd.forward(request, response);
 	}

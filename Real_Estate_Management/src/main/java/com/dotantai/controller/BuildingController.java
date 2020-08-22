@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,14 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dotantai.builder.BuildingSearchBuilder;
 import com.dotantai.dto.BuildingDTO;
-import com.dotantai.dto.LongListDTO;
 import com.dotantai.paging.Pageable;
 import com.dotantai.paging.PageableImpl;
 import com.dotantai.service.IBuildingService;
 import com.dotantai.service.impl.BuildingServiceImpl;
 import com.dotantai.utils.FormUtil;
-import com.dotantai.utils.HttpUtil;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -98,7 +94,7 @@ public class BuildingController extends HttpServlet {
 				boolean check = buildingService.delete(item);
 			}
 			response.sendRedirect("admin-building?action=LIST");
-
+			return;
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);
