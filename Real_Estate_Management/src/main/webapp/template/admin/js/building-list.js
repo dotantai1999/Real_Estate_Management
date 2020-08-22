@@ -13,16 +13,16 @@ function assignmentBuilding(id) {
         dataType: 'json',
         contentType: 'application/json',
         success: function (data) {
-            //const {list, listAll} = data;
+            const { allStaffs, selectedStaffs } = data;
+            const slectedStaffIds = selectedStaffs.map((staff) => staff.id);
             let markup;
-			console.log(data);
-            //let checked;
-            data.forEach((staff) => {
-                //list.includes(staff);
+            let checked;
+            allStaffs.forEach((staff) => {
+                checked = slectedStaffIds.includes(staff.id) ? 'checked' : '';
                 markup = `<tr>
                 <th scope="row">${staff.id}</th>
                 <td>${staff.fullName}</td>
-                <td class="text-center"><input checked=false type="checkbox" value="${staff.id}" id="checkbox_staff_${staff.id}"></td>
+                <td class="text-center"><input ${checked} type="checkbox" value="${staff.id}" id="checkbox_staff_${staff.id}"></td>
             </tr>`;
 
                 document

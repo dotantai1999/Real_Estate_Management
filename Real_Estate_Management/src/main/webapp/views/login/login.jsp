@@ -50,7 +50,7 @@
 
                                         <div class="space-6"></div>
 
-                                        <form>
+                                        <form method="POST" action="/login">
                                             <fieldset>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
@@ -76,7 +76,7 @@
                                                         <span class="lbl"> Nhớ Tài Khoản</span>
                                                     </label>
 
-                                                    <button type="button"
+                                                    <button type="submit"
                                                         class="width-35 pull-right btn btn-sm btn-primary">
                                                         <i class="ace-icon fa fa-key"></i>
                                                         <span class="bigger-110">Login</span>
