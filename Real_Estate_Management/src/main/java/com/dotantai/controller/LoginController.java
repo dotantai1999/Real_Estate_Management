@@ -22,7 +22,7 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/login/login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/login/login.jsp");
 			rd.forward(request, response);
 			
 	}

@@ -27,8 +27,8 @@
  * HttpServletRequest req = (HttpServletRequest) request; HttpSession session =
  * req.getSession(); if (session.getAttribute("username") == null) {
  * RequestDispatcher rd =
- * request.getRequestDispatcher("/views/admin/login/login.jsp");
- * rd.forward(request, response); }
+ * request.getRequestDispatcher("/views/login/login.jsp"); rd.forward(request,
+ * response); }
  * 
  * System.out.print("testttt"); chain.doFilter(request, response); }
  * 
