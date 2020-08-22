@@ -1,6 +1,7 @@
 package com.dotantai.dto;
 
-public class UserDTO {
+public class UserDTO extends AbstractDTO{
+	
 	private String userName;
 	private String password;
 	private String fullName;
@@ -37,5 +38,6 @@ public class UserDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
 
 }

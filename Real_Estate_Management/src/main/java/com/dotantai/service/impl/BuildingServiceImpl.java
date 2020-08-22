@@ -92,5 +92,4 @@ public class BuildingServiceImpl implements IBuildingService {
 		BuildingEntity buildingEntity = buildingRepository.findById(id);
 		return buildingConverter.convertToDTO(buildingEntity);
 	}
-
 }
