@@ -51,39 +51,56 @@ function assignStaff(data) {
         },
     });
 }
+$(document).ready(function () {
+    $('#deleteBuilding').click(function (e) {
+        e.preventDefault();
+        let data = {};
 
-$('#deleteBuilding').click(function (e) {
-    e.preventDefault();
-    let data = {};
+        // Get all checked building
+        const buildingIds = $('#buildingList')
+            .find('input[type=checkbox]:checked')
+            .map(function () {
+                return $(this).val();
+            })
+            .get();
 
-    // Get all checked building
-    const buildingIds = $('#buildingList')
-        .find('input[type=checkbox]:checked')
-        .map(function () {
-            return $(this).val();
-        })
-        .get();
+        data.buildingIds = buildingIds;
+        console.log(data);
+        console.log(JSON.stringify(data));
 
-    data.buildingIds = buildingIds;
-	console.log(data);
-    //deleteBuilding(data);
-});
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/Real_Estate_Management/admin-building?action=DELETE',
+            data: JSON.stringify(data), // Du lieu gui di
+            //dataType: 'json', // Dinh nghia kieu du lieu tra ve tu server
+            contentType: 'application/json', // Dinh nghia kieu du lieu gui di
+            success: function (response) {
+                console.log('oke');
+            },
+            error: function (response) {
+                console.log(response);
+            },
+        });
 
-function deleteBuilding(data) {
-    $.ajax({
-        type: 'GET',
-        url: 'http://localhost:8080/Real_Estate_Management/admin-building?action=DELETE',
-        data: JSON.stringify(data), // Du lieu gui di
-        dataType: 'json', // Dinh nghia kieu du lieu tra ve tu server
-        contentType: 'application/json', // Dinh nghia kieu du lieu gui di
-        success: function (response) {
-            console.log('oke');
-        },
-        error: function (response) {
-            console.log('fail');
-        },
+        //deleteBuilding(data);
     });
-}
+
+    function deleteBuilding(data) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/Real_Estate_Management/admin-building?action=DELETE',
+            data: JSON.stringify(data), // Du lieu gui di
+            //dataType: 'json', // Dinh nghia kieu du lieu tra ve tu server
+            contentType: 'application/json', // Dinh nghia kieu du lieu gui di
+            success: function (response) {
+                console.log('oke');
+            },
+            error: function (response) {
+                console.log(response);
+            },
+        });
+    }
+});
 
 $('#searchSubmit').click(function (e) {
     e.preventDefault();

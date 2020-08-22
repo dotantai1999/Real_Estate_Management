@@ -8,8 +8,11 @@ import com.dotantai.annotation.Table;
 
 @Entity
 @Table(name = "building")
-public class BuildingEntity extends BaseEntity {
+public class BuildingEntity{
 
+	@Column(name = "id")
+	private Long id;
+	
 	@Column(name = "name")
 	private String name;
 
@@ -66,13 +69,25 @@ public class BuildingEntity extends BaseEntity {
 
 	@Column(name = "timedecorator")
 	private String timeDecorator;
+	
+	@Column(name = "createddate")
+	private Date createdDate;
+	
+	@Column(name = "modifieddate")
+	private Date modifiedDate;
+	
+	@Column(name = "createdby")
+	private String createdBy;
+	
+	@Column(name = "modifiedby")
+	private String modifiedBy;
 
-	public String getType() {
-		return type;
+	public Long getId() {
+		return id;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -179,6 +194,14 @@ public class BuildingEntity extends BaseEntity {
 		this.overtimeCost = overtimeCost;
 	}
 
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public String getElectricityCost() {
 		return electricityCost;
 	}
@@ -218,4 +241,37 @@ public class BuildingEntity extends BaseEntity {
 	public void setTimeDecorator(String timeDecorator) {
 		this.timeDecorator = timeDecorator;
 	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getModifiedBy() {
+		return modifiedBy;
+	}
+
+	public void setModifiedBy(String modifiedBy) {
+		this.modifiedBy = modifiedBy;
+	}
+	
 }

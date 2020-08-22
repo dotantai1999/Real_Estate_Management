@@ -19,24 +19,24 @@ import com.dotantai.utils.FormUtil;
 import com.dotantai.utils.HttpUtil;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@WebServlet(urlPatterns = { "/api-building"})
+@WebServlet(urlPatterns = { "/api-building" })
 public class BuildingAPI extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	private IBuildingService buildingService = new BuildingServiceImpl();
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		ObjectMapper mapper = new ObjectMapper();
-		request.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json");
-		BuildingDTO buildingDTO = HttpUtil.of(request.getReader()).toModel(BuildingDTO.class);
-		buildingDTO = buildingService.insert(buildingDTO);
-		mapper.writeValue(response.getOutputStream(), buildingDTO);
-	
-	}
-
+	/*
+	 * protected void doPost(HttpServletRequest request, HttpServletResponse
+	 * response) throws ServletException, IOException { ObjectMapper mapper = new
+	 * ObjectMapper(); request.setCharacterEncoding("UTF-8");
+	 * response.setContentType("application/json"); BuildingDTO buildingDTO =
+	 * HttpUtil.of(request.getReader()).toModel(BuildingDTO.class); buildingDTO =
+	 * buildingService.insert(buildingDTO);
+	 * mapper.writeValue(response.getOutputStream(), buildingDTO);
+	 * 
+	 * }
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
@@ -49,9 +49,7 @@ public class BuildingAPI extends HttpServlet {
 				.setBuildingArea(building.getBuildingArea()).setNumberOfBasement(building.getNumberOfBasement())
 				.setBuildingTypes(building.getBuildingTypes()).setAreaRentFrom(building.getAreaRentFrom())
 				.setAreaRentTo(building.getAreaRentTo()).setCostRentFrom(building.getCostRentFrom())
-				.setCostRentTo(building.getCostRentTo())
-				.setStaffId(building.getStaffId())
-				.build();
+				.setCostRentTo(building.getCostRentTo()).setStaffId(building.getStaffId()).build();
 		Pageable pageable = new PageableImpl(building.getPage(), building.getLimit());
 
 		List<BuildingDTO> buildings = buildingService.findAll(buildingSearchBuilder, pageable);
