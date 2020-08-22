@@ -29,7 +29,7 @@ public class AssignBuildingAPI extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// get building id from json
 		ObjectMapper mapper = new ObjectMapper();  
 		BufferedReader reader = request.getReader();
@@ -50,15 +50,14 @@ public class AssignBuildingAPI extends HttpServlet {
 		// lay danh sach nguoi quan ly cua toa nha
 		List<UserDTO> list = userService.getStaffByBuildingId(id);
 		
+		
 		// tra ve json ket qua
 		mapper.writeValue(response.getOutputStream(), list);
+		
 		System.out.print("");
-		
-		
-		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//get buildingid and array of staffId
 		ObjectMapper mapper = new ObjectMapper();  
 		BufferedReader reader = request.getReader();
@@ -89,7 +88,7 @@ public class AssignBuildingAPI extends HttpServlet {
 		for(Long staffId : staffIds) {
 			assignmentStaffService.insertAssignmentStaff(buildingId, staffId);
 		}
-		response.sendRedirect("admin-building?action=LIST");
-
+		//response.sendRedirect("admin-building?action=LIST");
 	}
+	
 }

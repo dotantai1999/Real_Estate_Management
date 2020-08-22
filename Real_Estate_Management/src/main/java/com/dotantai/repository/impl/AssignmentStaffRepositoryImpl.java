@@ -10,7 +10,7 @@ public class AssignmentStaffRepositoryImpl implements IAssignmentStaffRepository
 
 	@Override
 	public void deleteStaffByBuildingId(Long id) {
-		StringBuilder sql = new StringBuilder("delete from assignmentstaff where building id = "+id);
+		StringBuilder sql = new StringBuilder("delete from assignmentstaff where buildingid = "+id);
 		Connection connection = null;
 		PreparedStatement statement = null;
 

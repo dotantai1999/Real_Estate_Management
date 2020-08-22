@@ -67,6 +67,28 @@ public class BuildingController extends HttpServlet {
 			BuildingDTO buildingDTO = buildingService.findById(id);
 			request.setAttribute("building", buildingDTO);
 			url = "/views/admin/building/view.jsp";
+		} 
+
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String action = request.getParameter("action");
+		if (action != null && action.equals("ADD")) {
+			BuildingDTO buildingDTO = FormUtil.toModel(BuildingDTO.class, request);
+			Long id = buildingService.insert(buildingDTO);
+			response.sendRedirect("admin-building?action=LIST");
+		} else if (action != null && action.equals("EDIT")) {
+			// Front End gui req POST EDIT voi thong tin la form-data building duoc cap nhat
+			// Xu ly
+			// Dieu huong ve lai trang action=EDIT (GET)
+			BuildingDTO buildingDTO = FormUtil.toModel(BuildingDTO.class, request);
+			buildingDTO.setId(request.getParameter("id"));
+			buildingService.update(buildingDTO);
+			response.sendRedirect("admin-building?action=LIST");
 		} else if (action != null && action.equals("DELETE")) {
 			// Front end gui file json: keys = buildingIds, value = array id
 			// Xu ly
@@ -93,30 +115,7 @@ public class BuildingController extends HttpServlet {
 			for (Long item : ids) {
 				boolean check = buildingService.delete(item);
 			}
-			response.sendRedirect("admin-building?action=LIST");
 			return;
-		}
-
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String action = request.getParameter("action");
-		if (action != null && action.equals("ADD")) {
-			BuildingDTO buildingDTO = FormUtil.toModel(BuildingDTO.class, request);
-			Long id = buildingService.insert(buildingDTO);
-			response.sendRedirect("admin-building?action=LIST");
-		} else if (action != null && action.equals("EDIT")) {
-			// Front End gui req POST EDIT voi thong tin la form-data building duoc cap nhat
-			// Xu ly
-			// Dieu huong ve lai trang action=EDIT (GET)
-			BuildingDTO buildingDTO = FormUtil.toModel(BuildingDTO.class, request);
-			buildingDTO.setId(request.getParameter("id"));
-			buildingService.update(buildingDTO);
-			response.sendRedirect("admin-building?action=LIST");
 		}
 	}
 
