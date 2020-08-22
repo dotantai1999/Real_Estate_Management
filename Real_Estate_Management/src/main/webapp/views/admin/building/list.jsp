@@ -321,22 +321,7 @@
                                     <th style="text-align: center">Chọn nhân viên</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Nguyễn Văn A</td>
-                                    <td class="text-center"><input type="checkbox" value="1" id="checkbox_staff_1"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Nguyễn Văn A</td>
-                                    <td class="text-center"><input type="checkbox" value="2" id="checkbox_staff_2"></td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Nguyễn Văn A</td>
-                                    <td class="text-center"><input type="checkbox" value="3" id="checkbox_staff_3"></td>
-                                </tr>
+                            <tbody id="assignmentBuildingTable">
 
                             </tbody>
                         </table>

@@ -56,15 +56,10 @@ public class AssignBuildingAPI extends HttpServlet {
 		Map<String, List<UserDTO>> map = new HashMap();
 		map.put("allStaffs", listAllUser);
 		map.put("selectedStaffs",list);
-		
-		
+
 		// tra ve json ket qua
 		mapper.writeValue(response.getOutputStream(), map);	
-		
-		
-		
-		
-	}
+			}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//get buildingid and array of staffId
@@ -97,7 +92,7 @@ public class AssignBuildingAPI extends HttpServlet {
 		for(Long staffId : staffIds) {
 			assignmentStaffService.insertAssignmentStaff(buildingId, staffId);
 		}
-		response.sendRedirect("admin-building?action=LIST");
-
+		//response.sendRedirect("admin-building?action=LIST");
 	}
+	
 }

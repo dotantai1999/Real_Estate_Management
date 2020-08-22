@@ -1,6 +1,42 @@
 function assignmentBuilding(id) {
-    openModalAssignmentBuilding();
+    // Delete all markup
+    document.querySelector('#assignmentBuildingTable').innerHTML = '';
+
+    // Call Api
+    const data = {
+        id: `${id}`,
+    };
+    $.ajax({
+        type: 'POST',
+        url: 'http://localhost:8080/Real_Estate_Management/AssignBuildingAPI',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        contentType: 'application/json',
+        success: function (data) {
+            const { allStaffs, selectedStaffs } = data;
+            const slectedStaffIds = selectedStaffs.map((staff) => staff.id);
+            let markup;
+            let checked;
+            allStaffs.forEach((staff) => {
+                checked = slectedStaffIds.includes(staff.id) ? 'checked' : '';
+                markup = `<tr>
+                <th scope="row">${staff.id}</th>
+                <td>${staff.fullName}</td>
+                <td class="text-center"><input ${checked} type="checkbox" value="${staff.id}" id="checkbox_staff_${staff.id}"></td>
+            </tr>`;
+
+                document
+                    .querySelector('#assignmentBuildingTable')
+                    .insertAdjacentHTML('beforeend', markup);
+            });
+        },
+        error: function (response) {
+            console.log(response);
+        },
+    });
+
     // Save buildingId in Modal input
+    openModalAssignmentBuilding();
     $('#buildingId').val(id);
 }
 
@@ -13,7 +49,7 @@ $('#btnAssignBuilding').click(function (e) {
     let data = {};
 
     // Get buildingId
-    data.buildingId = $('#buildingId').val();
+    data.idBuilding = $('#buildingId').val();
 
     // Get array of checked staff id
     // Plain javascript
@@ -30,28 +66,26 @@ $('#btnAssignBuilding').click(function (e) {
         })
         .get();
 
-    data.staffs = staffs;
+    data.staffIds = staffs;
     console.log(data);
-    //assignStaff(data);
+    assignStaff(data);
 });
 
 function assignStaff(data) {
     // Call api
     $.ajax({
-        type: 'POST',
-        url: '',
+        type: 'PUT',
+        url: 'http://localhost:8080/Real_Estate_Management/AssignBuildingAPI',
         data: JSON.stringify(data), // Du lieu gui di
-        dataType: 'json', // Dinh nghia kieu du lieu tra ve tu server
         contentType: 'application/json', // Dinh nghia kieu du lieu gui di
         success: function (response) {
-            console.log('oke');
+            $('#assignmentBuildingModal').modal('hide');
         },
         error: function (response) {
             console.log('fail');
         },
     });
 }
-
 $('#deleteBuilding').click(function (e) {
     e.preventDefault();
     let data = {};
@@ -65,22 +99,22 @@ $('#deleteBuilding').click(function (e) {
         .get();
 
     data.buildingIds = buildingIds;
-    console.log(data);
     deleteBuilding(data);
 });
 
 function deleteBuilding(data) {
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: 'http://localhost:8080/Real_Estate_Management/admin-building?action=DELETE',
         data: JSON.stringify(data), // Du lieu gui di
-        dataType: 'json', // Dinh nghia kieu du lieu tra ve tu server
         contentType: 'application/json', // Dinh nghia kieu du lieu gui di
         success: function (response) {
-            console.log('oke');
+            location.replace(
+                'http://localhost:8080/Real_Estate_Management/admin-building?action=LIST'
+            );
         },
         error: function (response) {
-            console.log('fail');
+            console.log(response);
         },
     });
 }
