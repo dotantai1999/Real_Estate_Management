@@ -50,11 +50,11 @@
 
                                         <div class="space-6"></div>
 
-                                        <form method="POST" action="/login">
+                                        <form method="POST" action="<c:url value='/login' />">
                                             <fieldset>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input type="text" class="form-control"
+                                                        <input name="username" type="text" class="form-control"
                                                             placeholder="Username" />
                                                         <i class="ace-icon fa fa-user"></i>
                                                     </span>
@@ -62,11 +62,13 @@
 
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input type="password" class="form-control"
+                                                        <input name="password" type="password" class="form-control"
                                                             placeholder="Password" />
                                                         <i class="ace-icon fa fa-lock"></i>
                                                     </span>
                                                 </label>
+                                                
+                                                <div>${msgLoginFailed}</div>
 
                                                 <div class="space"></div>
 

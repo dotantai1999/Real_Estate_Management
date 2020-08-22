@@ -40,10 +40,10 @@ public class LoginController extends HttpServlet {
 		if(check) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username",userName);
-			response.sendRedirect("/admin-home");
+			response.sendRedirect("admin-home");
 		} else {
 			request.setAttribute("msgLoginFailed","Login Failed");
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/login/login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/login/login.jsp");
 			rd.forward(request, response);
 		}
 

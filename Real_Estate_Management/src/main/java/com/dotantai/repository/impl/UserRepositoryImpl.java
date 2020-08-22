@@ -73,7 +73,7 @@ public class UserRepositoryImpl extends JpaRepositoryImpl<UserEntity> implements
 	public boolean checkAccount(String userName, String password) {
 
 		StringBuilder sql = new StringBuilder("");
-		sql.append("select count(*) from user where username = "+userName+" and password = "+password);
+		sql.append("select count(*) from user where username = '"+userName+"' and password = '"+password+"'");
 
 		Connection connection = null;
 		PreparedStatement statement = null;

@@ -260,7 +260,7 @@
                                                 </label>
                                             </td>
                                             <td>${item.name}</td>
-                                            <td>${item.id}</td>
+                                            <td>${item.street}</td>
                                             <td>${item.managerName}</td>
                                             <td>${item.managerPhone}</td>
                                             <td>${item.buildingArea}</td>

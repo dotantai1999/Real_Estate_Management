@@ -65,7 +65,11 @@
                         </ul>
                     </li>
                 </ul> -->
-            <a class="btn btn-xs btn-info" style="margin-top: 8px" href="login">Đăng nhập / Đăng ký</a>
+            <a class="btn btn-xs btn-info" style="margin-top: 8px" href="login">
+            <c:if test = "${sessionScope.username != null}">${sessionScope.username}</c:if>
+            <c:if test = "${sessionScope.username == null}">Đăng nhập / Đăng ký</c:if>
+            
+            </a>
         </div>
     </div>
 </div>
