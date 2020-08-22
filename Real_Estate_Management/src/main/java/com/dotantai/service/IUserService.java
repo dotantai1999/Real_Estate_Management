@@ -8,5 +8,6 @@ import com.dotantai.entity.UserEntity;
 public interface IUserService {
 	UserDTO save(UserDTO userDTO);
 	List<UserDTO> getStaffByBuildingId(Long id);
-
+	boolean checkAccount(String userName, String password);
+	List<UserDTO> findAll();
 }

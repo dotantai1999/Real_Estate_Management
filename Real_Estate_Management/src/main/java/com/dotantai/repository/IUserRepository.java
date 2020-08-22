@@ -7,4 +7,6 @@ import com.dotantai.entity.UserEntity;
 
 public interface IUserRepository extends IJpaRepository<UserEntity> {
 	List<UserEntity> getStaffByBuildingId(Long id);
+	boolean checkAccount(String userName, String password);
+	
 }

@@ -17,5 +17,7 @@ public class AssignmentStaffServiceImpl implements IAssignmentStaffService {
 	public void insertAssignmentStaff(Long buildingId, Long staffId) {
 		assignmentStaffRepository.insertAssignmentStaff(buildingId, staffId);
 	}
+	
+	
 
 }

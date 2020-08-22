@@ -7,6 +7,8 @@ import com.dotantai.converter.UserConverter;
 import com.dotantai.dto.BuildingDTO;
 import com.dotantai.dto.UserDTO;
 import com.dotantai.entity.UserEntity;
+import com.dotantai.paging.Pageable;
+import com.dotantai.paging.PageableImpl;
 import com.dotantai.repository.IUserRepository;
 import com.dotantai.repository.impl.UserRepositoryImpl;
 import com.dotantai.service.IUserService;
@@ -37,4 +39,22 @@ public class UserServiceImpl implements IUserService {
 		return result1;
 	}
 
+	@Override
+	public boolean checkAccount(String userName, String password) {
+		return userRepository.checkAccount(userName, password);
+
+	}
+
+	@Override
+	public List<UserDTO> findAll() {
+		Pageable pageable = new PageableImpl(null, null);
+		StringBuilder sql = new StringBuilder();
+		sql.append("select * from user");
+		List<UserEntity> listEntity = userRepository.findAll(sql, pageable);
+		List<UserDTO> listDTO = new ArrayList<>();
+		for (UserEntity item : listEntity) {
+			listDTO.add(userConverter.convertToDTO(item));
+		}
+		return listDTO;
+	}
 }

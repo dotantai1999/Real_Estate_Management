@@ -69,4 +69,54 @@ public class UserRepositoryImpl extends JpaRepositoryImpl<UserEntity> implements
 
 	}
 
+	@Override
+	public boolean checkAccount(String userName, String password) {
+
+		StringBuilder sql = new StringBuilder("");
+		sql.append("select count(*) from user where username = "+userName+" and password = "+password);
+
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+
+			// connect with DB
+			connection = EntityManagerFactory.getConnection();
+
+			// create statement
+			statement = connection.prepareStatement(sql.toString());
+
+			// excute query
+			resultSet = statement.executeQuery();
+
+			while (resultSet.next()) {
+				if (resultSet.getLong(1) == 1) {
+					return true;
+				}
+			}
+
+		} catch (SQLException e) {
+			if (connection != null) {
+				try {
+					connection.rollback();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		}
+		return false;
+	}
+
 }
