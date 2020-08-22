@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.dotantai.entity.AssignmentStaffEntity;
+import com.dotantai.entity.BuildingEntity;
 import com.dotantai.repository.IAssignmentStaffRepository;
 
-public class AssignmentStaffRepositoryImpl implements IAssignmentStaffRepository {
+public class AssignmentStaffRepositoryImpl extends JpaRepositoryImpl<AssignmentStaffEntity> implements IAssignmentStaffRepository {
 
 	@Override
 	public void deleteStaffByBuildingId(Long id) {
-		StringBuilder sql = new StringBuilder("delete from assignmentstaff where building id = "+id);
+		StringBuilder sql = new StringBuilder("delete from assignmentstaff where buildingid = "+id);
 		Connection connection = null;
 		PreparedStatement statement = null;
 

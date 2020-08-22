@@ -3,7 +3,9 @@ package com.dotantai.api;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +31,7 @@ public class AssignBuildingAPI extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
     
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// get building id from json
 		ObjectMapper mapper = new ObjectMapper();  
 		BufferedReader reader = request.getReader();
@@ -47,18 +49,24 @@ public class AssignBuildingAPI extends HttpServlet {
 		JsonNode objNode = jsonNode.get("id");
 		Long id = objNode.asLong();
 		
-		// lay danh sach nguoi quan ly cua toa nha
+		// lay danh sach nguoi quan ly cua toa nha va danh sach tat ca assignment
 		List<UserDTO> list = userService.getStaffByBuildingId(id);
+		List<UserDTO> listAllUser = userService.findAll();
+
+		Map<String, List<UserDTO>> map = new HashMap();
+		map.put("allStaffs", listAllUser);
+		map.put("selectedStaffs",list);
+		
 		
 		// tra ve json ket qua
-		mapper.writeValue(response.getOutputStream(), list);
-		System.out.print("");
+		mapper.writeValue(response.getOutputStream(), map);	
+		
 		
 		
 		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//get buildingid and array of staffId
 		ObjectMapper mapper = new ObjectMapper();  
 		BufferedReader reader = request.getReader();

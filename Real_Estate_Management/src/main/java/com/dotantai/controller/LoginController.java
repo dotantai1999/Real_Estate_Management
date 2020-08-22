@@ -21,6 +21,14 @@ public class LoginController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+	
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/login/login.jsp");
+			rd.forward(request, response);
+			
+	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String url = "";
 		//get username and password from form
 		String userName = request.getParameter("username");
@@ -32,13 +40,14 @@ public class LoginController extends HttpServlet {
 		if(check) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username",userName);
-			url = "";
+			response.sendRedirect("/admin-home");
 		} else {
-			url = "";
+			request.setAttribute("msgLoginFailed","Login Failed");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/login/login.jsp");
+			rd.forward(request, response);
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request, response);
+		
 	}
 	
 	
