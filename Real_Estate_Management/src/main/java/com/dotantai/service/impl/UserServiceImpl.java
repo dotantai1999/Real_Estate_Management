@@ -57,4 +57,25 @@ public class UserServiceImpl implements IUserService {
 		}
 		return listDTO;
 	}
+
+	@Override
+	public Long insert(UserDTO userDTO) {
+		return userRepository.insert(userConverter.convertToEntity(userDTO));
+	}
+
+	@Override
+	public void update(UserDTO userDTO) {
+		userRepository.update(userConverter.convertToEntity(userDTO));
+	}
+
+	@Override
+	public boolean delete(Long id) {
+		return userRepository.delete(id);
+	}
+
+	@Override
+	public UserEntity findById(Long id) throws InstantiationException, IllegalAccessException {
+		
+		return userRepository.findById(id);
+	}
 }
