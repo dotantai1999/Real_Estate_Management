@@ -58,7 +58,7 @@ public class CustomerController extends HttpServlet {
 			request.setAttribute("customer", customerDTO);
 			url = "/views/admin/customer/edit.jsp";
 		} else if (action != null && action.equals("ADD")) {
-			url = "/views/admin/building/add.jsp";
+			url = "/views/admin/customer/add.jsp";
 		} else if (action != null && action.equals("VIEW")) {
 			// Front end gui id cua building can xem thong qua url params
 			// Xu ly
@@ -72,9 +72,48 @@ public class CustomerController extends HttpServlet {
 				customerDTO = customerService.findById(id);
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 			}
 			request.setAttribute("customer", customerDTO);
-			url = "/views/admin/building/view.jsp";
+			url = "/views/admin/customer/view.jsp";
 		}
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);
