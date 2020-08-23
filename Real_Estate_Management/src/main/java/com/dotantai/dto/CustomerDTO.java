@@ -2,19 +2,14 @@ package com.dotantai.dto;
 
 import com.dotantai.annotation.Column;
 
-public class CustomerDTO {
+public class CustomerDTO extends AbstractDTO{
 	
-	private Long id;
 	private String name;
-	private String address;
-	private String phonenumber;
 	private String email;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private String phoneNumber;
+	private String address;
+	
+
 	public String getName() {
 		return name;
 	}
@@ -28,10 +23,10 @@ public class CustomerDTO {
 		this.address = address;
 	}
 	public String getPhoneNumber() {
-		return phonenumber;
+		return phoneNumber;
 	}
 	public void setPhoneNumber(String phonenumber) {
-		this.phonenumber = phonenumber;
+		this.phoneNumber = phonenumber;
 	}
 	public String getEmail() {
 		return email;

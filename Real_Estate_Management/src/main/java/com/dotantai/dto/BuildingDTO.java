@@ -1,7 +1,9 @@
 package com.dotantai.dto;
 
-public class BuildingDTO extends AbstractDTO {
+public class BuildingDTO extends AbstractDTO{
 
+
+	private String id;
 	private String name;
 	private String numberOfBasement;
 	private String buildingArea;
@@ -29,6 +31,16 @@ public class BuildingDTO extends AbstractDTO {
 	private String managerName;
 	private String managerPhone;
 
+	
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+	
 	public String getStaffId() {
 		return staffId;
 	}

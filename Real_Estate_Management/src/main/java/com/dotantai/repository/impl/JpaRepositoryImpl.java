@@ -380,7 +380,7 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 		}
 
 		sub = sub.deleteCharAt(sub.length()-1);
-		String sql = "UPDATE " + tableName + "SET" + sub.toString() + " WHERE id = ?";
+		String sql = "UPDATE " + tableName + " SET" + sub.toString() + " WHERE id = ?";
 		
 		
 		Connection connection = null;
@@ -399,7 +399,7 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 			
 
 			// set param
-			Field[] fields = (BuildingEntity.class).getDeclaredFields();
+			Field[] fields = (zClass).getDeclaredFields();
 			for (int i = 0; i < fields.length; i++) {
 				int index = i + 1;
 				Field field = fields[i];

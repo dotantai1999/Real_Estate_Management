@@ -83,14 +83,14 @@ public class CustomerController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-
 		if (action != null && action.equals("EDIT")) {
 
 			CustomerDTO customer = FormUtil.toModel(CustomerDTO.class, request);
-			customer.setId(Long.parseLong(request.getParameter("id")));
+			customer.setId(request.getParameter("id"));
 			customerService.update(customer);
-			response.sendRedirect("/admin-customer?action=EDIT");
+			response.sendRedirect("admin-customer?action=LIST");
 		} else if (action != null && action.equals("DELETE")) {
 			// Front end gui file json: keys = buildingIds, value = array id
 			// Xu ly

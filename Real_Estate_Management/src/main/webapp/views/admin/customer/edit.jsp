@@ -27,8 +27,8 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2 class="header blue text-center">Chỉnh sửa người dùng </h2>
-                        <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${customerURL}">
+                        <h2 class="header blue text-center">Chỉnh sửa khách hàng </h2>
+                        <form class="form-horizontal" id="formEdit" role="form" method="POST" >
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="name"> Họ và Tên
                                 </label>
@@ -49,7 +49,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="phone"> Số điện thoại
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${customer.phone}" type="text" id="phone" name="address"
+                                    <input value="${customer.phoneNumber}" type="text" id="phone" name="phoneNumber"
                                         class="col-xs-10 col-sm-5">
                                 </div>
                             </div>
