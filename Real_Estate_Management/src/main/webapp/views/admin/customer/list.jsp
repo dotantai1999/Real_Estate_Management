@@ -150,7 +150,7 @@
                                                     </a>
                                                     <a class="btn btn-xs btn-info" data-toggle="tooltip"
                                                         title="Chỉnh sửa"
-                                                        href="<c:url value='/admin-user?action=EDIT&id=${item.id}'/>">
+                                                        href="<c:url value='/admin-customer?action=EDIT&id=${item.id}'/>">
                                                         <i class=" ace-icon fa fa-edit bigger-120"></i>
                                                     </a>
                                                     <button class="btn btn-xs btn-danger" data-toggle="tooltip"

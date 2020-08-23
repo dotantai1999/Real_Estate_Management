@@ -229,7 +229,7 @@
                             </div> -->
 
                             <!-- Table -->
-                            <table id="simple-table" class="table table-bordered table-hover">
+                            <table id="simple-table" class="table table-bordered table-hover" style="margin-bottom: 0">
                                 <thead>
                                     <tr>
                                         <th class="center">
@@ -260,7 +260,7 @@
                                                 </label>
                                             </td>
                                             <td>${item.name}</td>
-                                            <td>${item.street}</td>
+                                            <td>${item.street} ${item.ward} ${item.district}</td>
                                             <td>${item.managerName}</td>
                                             <td>${item.managerPhone}</td>
                                             <td>${item.buildingArea}</td>
@@ -296,6 +296,26 @@
                                     </c:forEach>
                                 </tbody>
                             </table>
+                            <div style="text-align: center;">
+                                <ul class="pagination">
+                                    <li class="<c:if test=" curPage==1">disabled</c:if>">
+                                        <a href="<c:url value='/admin-building?action=LIST&page=${page - 1}'/>">
+                                            <i class="ace-icon fa fa-angle-double-left"></i>
+                                        </a>
+                                    </li>
+                                    <c:forEach var="page" items="${pages}">
+                                        <li class="<c:if test=" page==curPage">active</c:if>">
+                                            <a
+                                                href="<c:url value='/admin-building?action=LIST&page=${page}'/>">${page}</a>
+                                        </li>
+                                    </c:forEach>
+                                    <li class="<c:if test=" curPage==totalPage">disabled</c:if>">
+                                        <a href="<c:url value='/admin-building?action=LIST&page=${page + 1}'/>">
+                                            <i class="ace-icon fa fa-angle-double-right"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
