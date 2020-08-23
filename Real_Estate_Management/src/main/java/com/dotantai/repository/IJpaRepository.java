@@ -13,5 +13,7 @@ public interface IJpaRepository<T> {
 	List<T> findAll(StringBuilder sql, Pageable pageable, Object...objects);
 	
 	Long insert(Object object);
-
+	void update(Object object);
+	boolean delete(Long id);
+	T findById(Long id) throws InstantiationException, IllegalAccessException;
 }

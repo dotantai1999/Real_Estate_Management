@@ -6,7 +6,7 @@ import com.dotantai.annotation.Table;
 
 @Entity
 @Table(name = "assignmentstaff")
-public class AssignmentStaffEntity {
+public class AssignmentCustomerStaffEntity {
 
 	@Column(name = "id")
 	private Long id;
@@ -14,8 +14,8 @@ public class AssignmentStaffEntity {
 	@Column(name = "userid")
 	private Long userId;
 
-	@Column(name = "buildingid")
-	private Long buildingId;
+	@Column(name = "customerid")
+	private Long customerid;
 
 	public Long getId() {
 		return id;
@@ -33,16 +33,12 @@ public class AssignmentStaffEntity {
 		this.userId = userId;
 	}
 
-	public Long getBuildingId() {
-		return buildingId;
+	public Long getCustomerid() {
+		return customerid;
 	}
 
-	public void setBuildingId(Long buildingId) {
-		this.buildingId = buildingId;
+	public void setCustomerid(Long customerid) {
+		this.customerid = customerid;
 	}
-	
-	
-	
-	
 
 }
