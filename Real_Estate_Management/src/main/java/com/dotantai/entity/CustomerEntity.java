@@ -13,14 +13,14 @@ public class CustomerEntity {
 	@Column(name = "name")
 	private String name;
 	
-	@Column(name = "address")
-	private String address;
-	
-	@Column(name = "phonenumber")
-	private String phonenumber;
-	
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "phonenumber")
+	private String phoneNumber;
+	
+	@Column(name = "address")
+	private String address;
 
 	public Long getId() {
 		return id;
@@ -47,11 +47,11 @@ public class CustomerEntity {
 	}
 
 	public String getPhoneNumber() {
-		return phonenumber;
+		return phoneNumber;
 	}
 
 	public void setPhoneNumber(String number) {
-		this.phonenumber = number;
+		this.phoneNumber = number;
 	}
 
 	public String getEmail() {

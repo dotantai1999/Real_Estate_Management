@@ -12,10 +12,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.dotantai.dto.AssignmentCustomerStaffDTO;
 import com.dotantai.dto.BuildingDTO;
 import com.dotantai.dto.CustomerDTO;
+import com.dotantai.entity.AssignmentCustomerStaffEntity;
+import com.dotantai.service.IAssignmentCustomerStaffService;
 import com.dotantai.service.IBuildingService;
 import com.dotantai.service.ICustomerService;
+import com.dotantai.service.impl.AssignmentCustomerStaffServiceImpl;
 import com.dotantai.service.impl.BuildingServiceImpl;
 import com.dotantai.service.impl.CustomerServiceImpl;
 import com.dotantai.utils.FormUtil;
@@ -27,7 +31,8 @@ public class CustomerController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	private ICustomerService customerService = new CustomerServiceImpl();
-
+	private IAssignmentCustomerStaffService assignmentCustomerStaffService = new AssignmentCustomerStaffServiceImpl(); 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
@@ -72,45 +77,7 @@ public class CustomerController extends HttpServlet {
 				customerDTO = customerService.findById(id);
 			} catch (InstantiationException | IllegalAccessException e) {
 				e.printStackTrace();
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
+		
 			}
 			request.setAttribute("customer", customerDTO);
 			url = "/views/admin/customer/view.jsp";
@@ -122,14 +89,14 @@ public class CustomerController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-
 		if (action != null && action.equals("EDIT")) {
 
 			CustomerDTO customer = FormUtil.toModel(CustomerDTO.class, request);
-			customer.setId(Long.parseLong(request.getParameter("id")));
+			customer.setId(request.getParameter("id"));
 			customerService.update(customer);
-			response.sendRedirect("/admin-customer?action=EDIT");
+			response.sendRedirect("admin-customer?action=LIST");
 		} else if (action != null && action.equals("DELETE")) {
 			// Front end gui file json: keys = buildingIds, value = array id
 			// Xu ly
@@ -153,7 +120,13 @@ public class CustomerController extends HttpServlet {
 			for (JsonNode objNode : arrNode) {
 				ids.add(Long.parseLong(objNode.asText()));
 			}
+			
+			
 			for (Long item : ids) {
+				List<AssignmentCustomerStaffDTO> list = assignmentCustomerStaffService.findByCustomerId(item);
+				for(AssignmentCustomerStaffDTO item1 : list) {
+					boolean check = assignmentCustomerStaffService.delete(item1.getId());
+				}
 				boolean check = customerService.delete(item);
 			}
 			return;

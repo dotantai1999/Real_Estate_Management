@@ -11,6 +11,7 @@ $('#deleteCustomer').click(function (e) {
         .get();
 
     data.customerIds = customerIds;
+    console.log(data);
     deleteCustomer(data);
 });
 

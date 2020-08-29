@@ -70,11 +70,14 @@ public class UserRepositoryImpl extends JpaRepositoryImpl<UserEntity> implements
 	}
 
 	@Override
-	public boolean checkAccount(String userName, String password) {
+	public Long checkAccount(String userName, String password) {
 
-		StringBuilder sql = new StringBuilder("");
-		sql.append("select count(*) from user where username = '"+userName+"' and password = '"+password+"'");
-
+		StringBuilder sql1 = new StringBuilder("");
+		StringBuilder sql2 = new StringBuilder("");
+		
+		sql1.append("select count(*) from user where username = '"+userName+"' and password = '"+password+"'");
+		sql2.append("select * from user where username = '"+userName+"' and password = '"+password+"'");
+		
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -84,14 +87,19 @@ public class UserRepositoryImpl extends JpaRepositoryImpl<UserEntity> implements
 			connection = EntityManagerFactory.getConnection();
 
 			// create statement
-			statement = connection.prepareStatement(sql.toString());
+			statement = connection.prepareStatement(sql1.toString());
 
 			// excute query
 			resultSet = statement.executeQuery();
 
-			while (resultSet.next()) {
+			if (resultSet.next()) {
 				if (resultSet.getLong(1) == 1) {
-					return true;
+					statement = connection.prepareStatement(sql2.toString());
+					resultSet = statement.executeQuery();
+					if (resultSet.next()) {
+						return resultSet.getLong("id");
+					}
+					
 				}
 			}
 
@@ -116,7 +124,7 @@ public class UserRepositoryImpl extends JpaRepositoryImpl<UserEntity> implements
 				e2.printStackTrace();
 			}
 		}
-		return false;
+		return Long.valueOf(0);
 	}
 
 }
