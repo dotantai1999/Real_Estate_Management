@@ -79,28 +79,30 @@
                 </li>
             </ul>
         </li>
-        <li class="">
-            <a href="#" class="dropdown-toggle">
-                <i class="menu-icon fa fa-users"></i>
-                <span class="menu-text">
-                    QL Người Dùng
-                </span>
+        <c:if test="${sessionScope.role == 1}">
+            <li class="">
+                <a href="#" class="dropdown-toggle">
+                    <i class="menu-icon fa fa-users"></i>
+                    <span class="menu-text">
+                        QL Người Dùng
+                    </span>
 
-                <b class="arrow fa fa-angle-down "></b>
-            </a>
+                    <b class="arrow fa fa-angle-down "></b>
+                </a>
 
-            <b class="arrow"></b>
+                <b class="arrow"></b>
 
-            <ul class="submenu nav-hide" style="display: none;">
-                <li class="">
-                    <a href="<c:url value='/admin-user?action=LIST'/>">
-                        <i class="menu-icon fa fa-caret-right"></i>
-                        Danh sách người dùng
-                    </a>
+                <ul class="submenu nav-hide" style="display: none;">
+                    <li class="">
+                        <a href="<c:url value='/admin-user?action=LIST'/>">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            Danh sách người dùng
+                        </a>
 
-                </li>
-            </ul>
-        </li>
+                    </li>
+                </ul>
+            </li>
+        </c:if>
         <li class="">
             <a href="<c:url value='/admin-building/priority-list' />">
                 <i class="menu-icon fa fa-list"></i>

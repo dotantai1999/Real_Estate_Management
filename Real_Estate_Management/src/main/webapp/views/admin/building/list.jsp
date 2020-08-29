@@ -142,7 +142,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="col-sm-4">
                                                 <div>
                                                     <label for="manager">Tên quản lý</label>
@@ -169,7 +169,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <div class="col-sm-2">
                                                 <input type="checkbox" class="margin-right-xs" name="type1" id="type1">
@@ -242,8 +242,6 @@
                                         </th>
                                         <th>Tên sản phẩm</th>
                                         <th>Địa chỉ</th>
-                                        <th>Tên quản lý</th>
-                                        <th>Số điện thoại</th>
                                         <th>Diện tích sàn</th>
                                         <th>Giá thuê</th>
                                         <th>Phí dịch vụ</th>
@@ -263,8 +261,6 @@
                                             </td>
                                             <td>${item.name}</td>
                                             <td>${item.street} ${item.ward} ${item.district}</td>
-                                            <td>${item.managerName}</td>
-                                            <td>${item.managerPhone}</td>
                                             <td>${item.buildingArea}</td>
                                             <td>${item.costRent}</td>
                                             <td>${item.serviceCost}</td>

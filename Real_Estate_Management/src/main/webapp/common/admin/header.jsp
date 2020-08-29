@@ -26,13 +26,14 @@
         </div>
 
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
-            <!-- <ul class="nav ace-nav">
+        <c:if test = "${sessionScope.username != null}">
+            <ul class="nav ace-nav">
                     <li class="light-blue dropdown-modal">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                             <img class="nav-user-photo" src="<c:url value='/template/admin/assets/images/avatars/user.jpg' />" alt="Jason's Photo" />
                             <span class="user-info">
                                 <small>Welcome,</small>
-                                Jason
+                                ${sessionScope.username}
                             </span>
 
                             <i class="ace-icon fa fa-caret-down"></i>
@@ -40,13 +41,6 @@
 
                         <ul
                             class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-cog"></i>
-                                    Settings
-                                </a>
-                            </li>
-
                             <li>
                                 <a href="profile.html">
                                     <i class="ace-icon fa fa-user"></i>
@@ -57,19 +51,21 @@
                             <li class="divider"></li>
 
                             <li>
-                                <a href="#">
+                                <a href="/logout">
                                     <i class="ace-icon fa fa-power-off"></i>
-                                    Logout
+                                    Đăng xuất
                                 </a>
                             </li>
                         </ul>
                     </li>
-                </ul> -->
-            <a class="btn btn-xs btn-info" style="margin-top: 8px" href="login">
-            <c:if test = "${sessionScope.username != null}">${sessionScope.username}</c:if>
-            <c:if test = "${sessionScope.username == null}">Đăng nhập / Đăng ký</c:if>
-            
-            </a>
+                </ul> 
+
+            </c:if>
+            <c:if test = "${sessionScope.username == null}">
+	            <a class="btn btn-xs btn-info" style="margin-top: 8px" href="login">
+	            	Đăng nhập / Đăng ký
+            	</a>
+            </c:if>
         </div>
     </div>
 </div>
