@@ -15,5 +15,5 @@ public interface IUserService {
 	Long insert(UserDTO userDTO);
 	void update(UserDTO userDTO);
 	boolean delete(Long id);
-	UserEntity findById(Long id) throws InstantiationException, IllegalAccessException;
+	UserDTO findById(Long id) throws InstantiationException, IllegalAccessException;
 }

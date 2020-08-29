@@ -74,8 +74,8 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public UserEntity findById(Long id) throws InstantiationException, IllegalAccessException {
+	public UserDTO findById(Long id) throws InstantiationException, IllegalAccessException {
 		
-		return userRepository.findById(id);
+		return userConverter.convertToDTO(userRepository.findById(id));
 	}
 }
