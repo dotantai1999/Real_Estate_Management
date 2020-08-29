@@ -120,10 +120,9 @@
                                             </label>
                                         </th>
                                         <th>Tên</th>
-                                        <th>Nhu cầu</th>
-                                        <th>Người nhập</th>
-                                        <th>Ngày nhập</th>
-                                        <th>Tình trạng</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Số Điện Thoại</th>
+                                        <th>Email</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
@@ -139,10 +138,9 @@
                                                 </label>
                                             </td>
                                             <td>${item.name}</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>${item.address}</td>
+                                            <td>${item.phone}</td>
+                                            <td>${item.email}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a class="btn btn-xs btn-success" data-toggle="tooltip"

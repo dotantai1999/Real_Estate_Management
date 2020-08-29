@@ -92,7 +92,7 @@
                                             </a>
                                             <button
                                                 class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip" title="Xóa" id="deleteBuilding">
+                                                data-toggle="tooltip" title="Xóa" id="deleteUser">
                                                 <i class=" fa fa-trash bigger-110 red"></i>
                                             </button>
                                         </div>
@@ -121,7 +121,7 @@
                                     </tr>
                                 </thead>
 
-                                <tbody id="buildingList">
+                                <tbody id="userList">
                                     <c:forEach var="item" items="${users}">
                                         <tr>
                                             <td class="center">

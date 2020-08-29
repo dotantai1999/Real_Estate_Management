@@ -51,7 +51,7 @@
                             <li class="divider"></li>
 
                             <li>
-                                <a href="/logout">
+                                <a href="logout">
                                     <i class="ace-icon fa fa-power-off"></i>
                                     Đăng xuất
                                 </a>

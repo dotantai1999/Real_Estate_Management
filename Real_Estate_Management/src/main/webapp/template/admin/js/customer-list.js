@@ -1,8 +1,6 @@
 $('#deleteCustomer').click(function (e) {
     e.preventDefault();
     let data = {};
-
-    // Get all checked building
     const customerIds = $('#customerList')
         .find('input[type=checkbox]:checked')
         .map(function () {
