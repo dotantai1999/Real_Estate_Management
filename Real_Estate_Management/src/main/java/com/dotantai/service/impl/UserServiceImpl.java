@@ -40,7 +40,7 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public boolean checkAccount(String userName, String password) {
+	public Long checkAccount(String userName, String password) {
 		return userRepository.checkAccount(userName, password);
 
 	}

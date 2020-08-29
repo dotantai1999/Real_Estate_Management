@@ -50,7 +50,7 @@
                                 <label class="col-sm-3 control-label no-padding-right" for="phone"> Số điện thoại
                                 </label>
                                 <div class="col-sm-9">
-                                    <input value="${customer.phone}" type="text" id="phone" name="address"
+                                    <input value="${customer.phoneNumber}" type="text" id="phone" name="phonenumber"
                                         class="col-xs-10 col-sm-5">
                                 </div>
                             </div>

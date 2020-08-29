@@ -5,7 +5,7 @@ import com.dotantai.annotation.Entity;
 import com.dotantai.annotation.Table;
 
 @Entity
-@Table(name = "assignmentstaff")
+@Table(name = "assignmentcustomerstaff")
 public class AssignmentCustomerStaffEntity {
 
 	@Column(name = "id")

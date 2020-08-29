@@ -10,13 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.dotantai.service.IUserRoleService;
 import com.dotantai.service.IUserService;
+import com.dotantai.service.impl.UserRoleServiceImpl;
 import com.dotantai.service.impl.UserServiceImpl;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginController extends HttpServlet {
 	
 	private IUserService userService = new UserServiceImpl();
+	private IUserRoleService userRoleService = new UserRoleServiceImpl();
 	private static final long serialVersionUID = 1L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,11 +38,13 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 				
 		//check (count)
-		boolean check = userService.checkAccount(userName, password);
+		Long id = userService.checkAccount(userName, password);
 		
-		if(check) {
+		if(id != 0) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username",userName);
+			session.setAttribute("role",userRoleService.findRoleIdByUserId(id));
+			System.out.print(id);
 			response.sendRedirect("admin-home");
 		} else {
 			request.setAttribute("msgLoginFailed","Login Failed");

@@ -9,7 +9,7 @@ import com.dotantai.repository.IJpaRepository;
 public interface IUserService {
 	UserDTO save(UserDTO userDTO);
 	List<UserDTO> getStaffByBuildingId(Long id);
-	boolean checkAccount(String userName, String password);
+	Long checkAccount(String userName, String password);
 	
 	List<UserDTO> findAll();
 	Long insert(UserDTO userDTO);
