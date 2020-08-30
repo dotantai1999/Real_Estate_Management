@@ -26,6 +26,13 @@ public class UserRoleDTO {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
+	public UserRoleDTO(Long roleId, Long userId) {
+		super();
+		this.roleId = roleId;
+		this.userId = userId;
+	}
+	
+	
 
 	
 

@@ -7,6 +7,7 @@ import com.dotantai.converter.UserConverter;
 import com.dotantai.converter.UserRoleConverter;
 import com.dotantai.dto.BuildingDTO;
 import com.dotantai.dto.UserDTO;
+import com.dotantai.dto.UserRoleDTO;
 import com.dotantai.entity.UserEntity;
 import com.dotantai.paging.Pageable;
 import com.dotantai.paging.PageableImpl;
@@ -27,6 +28,16 @@ public class UserRoleServiceImpl implements IUserRoleService {
 	public Long findRoleIdByUserId(Long id) {
 		return userRoleRepository.findRoleIdByUserId(id);
 	}
+
+
+
+	@Override
+	public Long insert(UserRoleDTO userRoleDTO) {
+		
+		return userRoleRepository.insert(userRoleDTO);
+	}
+	
+	
 
 	
 }

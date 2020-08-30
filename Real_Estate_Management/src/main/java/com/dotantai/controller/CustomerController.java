@@ -32,7 +32,7 @@ public class CustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ICustomerService customerService = new CustomerServiceImpl();
 	private IAssignmentCustomerStaffService assignmentCustomerStaffService = new AssignmentCustomerStaffServiceImpl(); 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String action = request.getParameter("action");

@@ -139,7 +139,7 @@
                                             </td>
                                             <td>${item.name}</td>
                                             <td>${item.address}</td>
-                                            <td>${item.phone}</td>
+                                            <td>${item.phoneNumber}</td>
                                             <td>${item.email}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">

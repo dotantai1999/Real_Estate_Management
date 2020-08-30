@@ -76,7 +76,7 @@ public class UserRepositoryImpl extends JpaRepositoryImpl<UserEntity> implements
 		StringBuilder sql2 = new StringBuilder("");
 		
 		sql1.append("select count(*) from user where username = '"+userName+"' and password = '"+password+"'");
-		sql2.append("select * from user where username = '"+userName+"' and password = '"+password+"'");
+		sql2.append("select * from user where username = '"+userName+"' and password = '"+password+"' and status = 1");
 		
 		Connection connection = null;
 		PreparedStatement statement = null;
