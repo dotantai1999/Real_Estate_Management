@@ -44,6 +44,8 @@ public class BuildingController extends HttpServlet {
 			Pageable pageable = new PageableImpl(building.getPage(), building.getLimit());
 			List<BuildingDTO> buildings = buildingService.findAll(buildingSearchBuilder, pageable);
 			request.setAttribute("buildings", buildings);
+			
+			
 			url = "/views/admin/building/list.jsp";
 		} else if (action != null && action.equals("EDIT")) {
 			// Front end gui id cua building can sua thong qua url params
