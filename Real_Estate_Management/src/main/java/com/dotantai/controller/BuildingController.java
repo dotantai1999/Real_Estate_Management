@@ -44,8 +44,7 @@ public class BuildingController extends HttpServlet {
 			Pageable pageable = new PageableImpl(building.getPage(), building.getLimit());
 			List<BuildingDTO> buildings = buildingService.findAll(buildingSearchBuilder, pageable);
 			request.setAttribute("buildings", buildings);
-			
-			
+
 			url = "/views/admin/building/list.jsp";
 		} else if (action != null && action.equals("EDIT")) {
 			// Front end gui id cua building can sua thong qua url params
@@ -69,7 +68,7 @@ public class BuildingController extends HttpServlet {
 			BuildingDTO buildingDTO = buildingService.findById(id);
 			request.setAttribute("building", buildingDTO);
 			url = "/views/admin/building/view.jsp";
-		} 
+		}
 
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
@@ -95,17 +94,17 @@ public class BuildingController extends HttpServlet {
 			// Front end gui file json: keys = buildingIds, value = array id
 			// Xu ly
 			// Dieu huong ve lai trang action=LIST (GET)
-			ObjectMapper mapper = new ObjectMapper();  
+			ObjectMapper mapper = new ObjectMapper();
 			BufferedReader reader = request.getReader();
 			StringBuilder sb = new StringBuilder();
-			try { 
+			try {
 				String line;
 				while ((line = reader.readLine()) != null) {
 					sb.append(line);
 				}
 			} catch (IOException e) {
-			  System.out.print(e.getMessage());
-			  
+				System.out.print(e.getMessage());
+
 			}
 			String json = sb.toString();
 			JsonNode jsonNode = mapper.readTree(json);

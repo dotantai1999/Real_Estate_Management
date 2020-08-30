@@ -33,6 +33,7 @@ public class PriorityBuildingController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		String url = "";
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 		if (action != null && action.equals("ADD")) {
@@ -44,8 +45,8 @@ public class PriorityBuildingController extends HttpServlet {
 			priorityBuildingListDTO.setUserId(userId);
 			priorityBuildingListDTO.setBuildingId(buildingId);
 			Long id = priorityBuildingListService.insert(priorityBuildingListDTO);
-			response.sendRedirect("admin-building/priority-list?action=LIST");
-		} else {
+			response.sendRedirect("/Real_Estate_Management/admin-building/priority-list?action=LIST");
+		} else if (action != null && action.equals("LIST")) {
 			HttpSession session = request.getSession();
 			Long idUser = (Long) session.getAttribute("id");
 
@@ -53,9 +54,13 @@ public class PriorityBuildingController extends HttpServlet {
 			List<BuildingDTO> listBuildings = priorityBuildingListService.findPriorityBuildingListByBuildingId(Ids);
 
 			request.setAttribute("buildings", listBuildings);
-			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/building/priorityList.jsp");
+			url = "/views/admin/building/priorityList.jsp";
+			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request, response);
 		}
+		
+		
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -99,7 +104,7 @@ public class PriorityBuildingController extends HttpServlet {
 			for (Long item : ids) {
 				boolean check = priorityBuildingListService.delete(item, idUser);
 			}
-			return;
+			response.sendRedirect("admin-building/priority-list?action=LIST");
 		}
 	}
 

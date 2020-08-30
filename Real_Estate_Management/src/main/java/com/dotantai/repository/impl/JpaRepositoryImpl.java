@@ -288,7 +288,7 @@ public class JpaRepositoryImpl<T> implements IJpaRepository<T> {
 		} catch (SQLException | IllegalAccessException e) {
 			if (connection != null) {
 				try {
-					connection.rollback();
+ 					connection.rollback();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}

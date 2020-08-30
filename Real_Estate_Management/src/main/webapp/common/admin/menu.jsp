@@ -104,7 +104,7 @@
             </li>
         </c:if>
         <li class="">
-            <a href="<c:url value='/admin-building/priority-list' />">
+            <a href="<c:url value='/admin-building/priority-list?action=LIST' />">
                 <i class="menu-icon fa fa-list"></i>
                 <span class="menu-text">
                     DS Tòa Nhà Ưu Tiên
