@@ -11,10 +11,10 @@ public class PriorityBuildingListEntity {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "id")
+	@Column(name = "userid")
 	private Long userId;
 
-	@Column(name = "id")
+	@Column(name = "buildingid")
 	private Long buildingId;
 
 	public Long getId() {

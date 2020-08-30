@@ -32,19 +32,32 @@ public class PriorityBuildingController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// Lay ds building uu tien -> luu vao variable buildings -> truyen vao file jsp
 
-		HttpSession session = request.getSession();
-		Long idUser = (Long) session.getAttribute("id");
+		request.setCharacterEncoding("UTF-8");
+		String action = request.getParameter("action");
+		if (action != null && action.equals("ADD")) {
+			HttpSession session = request.getSession();
+			Long userId = (Long) session.getAttribute("id");
+			Long buildingId = Long.parseLong(request.getParameter("buildingId"));
 
-		ArrayList<Long> Ids = (ArrayList<Long>) priorityBuildingListService.findPriorityBuildingIdByUserId(idUser);
-		List<BuildingDTO> listBuildings = priorityBuildingListService.findPriorityBuildingListByBuildingId(Ids);
+			PriorityBuildingListDTO priorityBuildingListDTO = new PriorityBuildingListDTO();
+			priorityBuildingListDTO.setUserId(userId);
+			priorityBuildingListDTO.setBuildingId(buildingId);
+			Long id = priorityBuildingListService.insert(priorityBuildingListDTO);
+			response.sendRedirect("admin-building/priority-list?action=LIST");
+		} else {
+			HttpSession session = request.getSession();
+			Long idUser = (Long) session.getAttribute("id");
 
-		request.setAttribute("buildings", listBuildings);
-		RequestDispatcher rd = request.getRequestDispatcher("/views/admin/building/priorityList.jsp");
-		rd.forward(request, response);
+			ArrayList<Long> Ids = (ArrayList<Long>) priorityBuildingListService.findPriorityBuildingIdByUserId(idUser);
+			List<BuildingDTO> listBuildings = priorityBuildingListService.findPriorityBuildingListByBuildingId(Ids);
+
+			request.setAttribute("buildings", listBuildings);
+			RequestDispatcher rd = request.getRequestDispatcher("/views/admin/building/priorityList.jsp");
+			rd.forward(request, response);
+		}
 	}
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
@@ -53,24 +66,24 @@ public class PriorityBuildingController extends HttpServlet {
 			HttpSession session = request.getSession();
 			Long userId = (Long) session.getAttribute("id");
 			Long buildingId = Long.parseLong(request.getParameter("buildingId"));
-			
+
 			PriorityBuildingListDTO priorityBuildingListDTO = new PriorityBuildingListDTO();
 			priorityBuildingListDTO.setUserId(userId);
-			priorityBuildingListDTO.setBuildingId(buildingId);	
+			priorityBuildingListDTO.setBuildingId(buildingId);
 			Long id = priorityBuildingListService.insert(priorityBuildingListDTO);
 			response.sendRedirect("admin-building/priority-list?action=LIST");
-		} else if (action != null && action.equals("DELETE")) {	
-			ObjectMapper mapper = new ObjectMapper();  
+		} else if (action != null && action.equals("DELETE")) {
+			ObjectMapper mapper = new ObjectMapper();
 			BufferedReader reader = request.getReader();
 			StringBuilder sb = new StringBuilder();
-			try { 
+			try {
 				String line;
 				while ((line = reader.readLine()) != null) {
 					sb.append(line);
 				}
 			} catch (IOException e) {
-			  System.out.print(e.getMessage());
-			  
+				System.out.print(e.getMessage());
+
 			}
 			String json = sb.toString();
 			JsonNode jsonNode = mapper.readTree(json);
@@ -79,16 +92,15 @@ public class PriorityBuildingController extends HttpServlet {
 			for (JsonNode objNode : arrNode) {
 				ids.add(Long.parseLong(objNode.asText()));
 			}
-			
+
 			HttpSession session = request.getSession();
 			Long idUser = (Long) session.getAttribute("id");
-			
-			for(Long item : ids) {
+
+			for (Long item : ids) {
 				boolean check = priorityBuildingListService.delete(item, idUser);
 			}
 			return;
 		}
 	}
-
 
 }

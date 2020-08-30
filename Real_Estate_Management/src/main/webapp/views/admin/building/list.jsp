@@ -287,7 +287,7 @@
 
                                                     <a class="btn btn-xs btn-warning" data-toggle="tooltip"
                                                         title="Thêm vào danh sách ưu tiên"
-                                                        href="<c:url value='/priority-list?action=ADD&buildingId=${item.id}'/>">
+                                                        href="<c:url value='/admin-building/priority-list?action=ADD&buildingId=${item.id}'/>">
                                                         <i class="ace-icon fa fa-plus bigger-120"></i>
                                                     </a>
                                                 </div>
