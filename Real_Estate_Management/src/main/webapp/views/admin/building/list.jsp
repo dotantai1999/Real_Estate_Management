@@ -285,10 +285,11 @@
                                                         </button>
                                                     </c:if>
 
-                                                    <button class="btn btn-xs btn-warning" data-toggle="tooltip"
-                                                        title="Thêm vào danh sách ưu tiên">
+                                                    <a class="btn btn-xs btn-warning" data-toggle="tooltip"
+                                                        title="Thêm vào danh sách ưu tiên"
+                                                        href="<c:url value='/priority-list?action=ADD&buildingId=${item.id}'/>">
                                                         <i class="ace-icon fa fa-plus bigger-120"></i>
-                                                    </button>
+                                                    </a>
                                                 </div>
 
                                             </td>

@@ -124,24 +124,36 @@
                                 <tbody id="userList">
                                     <c:forEach var="item" items="${users}">
                                         <tr>
-                                            <td class="center">
-                                                <label class="pos-rel">
-                                                    <input type="checkbox" class="ace" value="${item.id}"
-                                                        id="checkbox_building_${item.id}">
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
-                                            <td>${item.userName}</td>
-                                            <td>${item.fullName}</td>
-                                            <td>
-                                                <div class="hidden-sm hidden-xs btn-group">
-                                                    <a class="btn btn-xs btn-info" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"
-                                                        href="<c:url value='/admin-user?action=EDIT&id=${item.id}'/>">
-                                                        <i class=" ace-icon fa fa-edit bigger-120"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
+                                            <c:if test="${item.status == 1}">
+                                                <td class="center">
+                                                    <label class="pos-rel">
+                                                        <input type="checkbox" class="ace" value="${item.id}"
+                                                            id="checkbox_building_${item.id}">
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </td>
+                                                <td>${item.userName}</td>
+                                                <td>${item.fullName}</td>
+                                                <td>
+                                                    <div class="hidden-sm hidden-xs btn-group">
+                                                        <a class="btn btn-xs btn-info" data-toggle="tooltip"
+                                                            title="Chỉnh sửa"
+                                                            href="<c:url value='/admin-user?action=EDIT&id=${item.id}'/>">
+                                                            <i class=" ace-icon fa fa-edit bigger-120"></i>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                            </c:if>
+                                            <c:if test="${item.status == 0}">
+                                                <td class="center">
+
+                                                </td>
+                                                <td style="text-decoration-line: line-through;">${item.userName}</td>
+                                                <td style="text-decoration-line: line-through;">${item.fullName}</td>
+                                                <td>
+
+                                                </td>
+                                            </c:if>
                                         </tr>
                                     </c:forEach>
                                 </tbody>

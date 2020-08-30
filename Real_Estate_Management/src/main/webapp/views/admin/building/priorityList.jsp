@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <%@include file="/common/taglib.jsp" %>
-<c:url var="buildingURL" value="/admin-building?action=ADD" />
 <!DOCTYPE html>
 <html>
 
@@ -27,7 +26,7 @@
                                 <div class="dt-buttons btn-overlap btn-group">
                                     <button
                                         class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
-                                        data-toggle="tooltip" title="Xóa" id="deleteBuilding">
+                                        data-toggle="tooltip" title="Xóa" id="deletePriorityBuilding">
                                         <i class=" fa fa-trash bigger-110 red"></i>
                                     </button>
                                 </div>
@@ -49,18 +48,16 @@
                                             <span class="lbl"></span>
                                         </label>
                                     </th>
-                                    <th>Ngày</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Địa chỉ</th>
-                                    <th>Tên quản lý</th>
                                     <th>Diện tích sàn</th>
-                                    <th>Diện tích trống</th>
                                     <th>Giá thuê</th>
+                                    <th>Phí dịch vụ</th>
                                     <th>Thao tác</th>
                                 </tr>
                             </thead>
 
-                            <tbody id="buildingList">
+                            <tbody id="priorityBuildingList">
                                 <c:forEach var="item" items="${buildings}">
                                     <tr>
                                         <td class="center">
@@ -70,12 +67,9 @@
                                                 <span class="lbl"></span>
                                             </label>
                                         </td>
-                                        <td></td>
                                         <td>${item.name}</td>
-                                        <td>${item.id}</td>
-                                        <td>${item.managerName}</td>
+                                        <td>${item.street} ${item.ward} ${item.district}</td>
                                         <td>${item.buildingArea}</td>
-                                        <td></td>
                                         <td>${item.costRent}</td>
                                         <td>${item.serviceCost}</td>
                                         <td>
