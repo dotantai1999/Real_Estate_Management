@@ -55,6 +55,7 @@
     <script src="<c:url value='/template/admin/js/building-list.js' />"></script>
     <script src="<c:url value='/template/admin/js/building-edit.js' />"></script>
     <script src="<c:url value='/template/admin/js/customer-list.js' />"></script>
+    <script src="<c:url value='/template/admin/js/user-list.js' />"></script>
 </body>
 
 </html>

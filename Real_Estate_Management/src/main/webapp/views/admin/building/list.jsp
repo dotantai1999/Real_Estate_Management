@@ -142,7 +142,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <div class="col-sm-4">
                                                 <div>
                                                     <label for="manager">Tên quản lý</label>
@@ -169,7 +169,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <div class="col-sm-2">
                                                 <input type="checkbox" class="margin-right-xs" name="type1" id="type1">
@@ -206,22 +206,24 @@
                             <h2 class="header blue text-center margin-top-md">Danh sách tòa nhà</h2>
 
                             <!-- Buttons -->
-                            <div class="clearfix">
-                                <div class="pull-right tableTools-container">
-                                    <div class="dt-buttons btn-overlap btn-group">
-                                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
-                                            data-toggle="tooltip" title="Thêm"
-                                            href="<c:url value='/admin-building?action=ADD'/>">
-                                            <i class="fa fa-plus-circle bigger-110 blue" aria-hidden="true"></i>
-                                        </a>
-                                        <button
-                                            class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
-                                            data-toggle="tooltip" title="Xóa" id="deleteBuilding">
-                                            <i class=" fa fa-trash bigger-110 red"></i>
-                                        </button>
+                            <c:if test="${sessionScope.role == 1}">
+                                <div class="clearfix">
+                                    <div class="pull-right tableTools-container">
+                                        <div class="dt-buttons btn-overlap btn-group">
+                                            <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
+                                                data-toggle="tooltip" title="Thêm"
+                                                href="<c:url value='/admin-building?action=ADD'/>">
+                                                <i class="fa fa-plus-circle bigger-110 blue" aria-hidden="true"></i>
+                                            </a>
+                                            <button
+                                                class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
+                                                data-toggle="tooltip" title="Xóa" id="deleteBuilding">
+                                                <i class=" fa fa-trash bigger-110 red"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </c:if>
 
                             <!-- Results Search
                             <div class="table-header">
@@ -240,8 +242,6 @@
                                         </th>
                                         <th>Tên sản phẩm</th>
                                         <th>Địa chỉ</th>
-                                        <th>Tên quản lý</th>
-                                        <th>Số điện thoại</th>
                                         <th>Diện tích sàn</th>
                                         <th>Giá thuê</th>
                                         <th>Phí dịch vụ</th>
@@ -261,8 +261,6 @@
                                             </td>
                                             <td>${item.name}</td>
                                             <td>${item.street} ${item.ward} ${item.district}</td>
-                                            <td>${item.managerName}</td>
-                                            <td>${item.managerPhone}</td>
                                             <td>${item.buildingArea}</td>
                                             <td>${item.costRent}</td>
                                             <td>${item.serviceCost}</td>
@@ -273,17 +271,19 @@
                                                         href="<c:url value='/admin-building?action=VIEW&id=${item.id}'/>">
                                                         <i class="ace-icon fa fa-eye bigger-120"></i>
                                                     </a>
+                                                    <c:if test="${sessionScope.role == 1}">
+                                                        <a class="btn btn-xs btn-info" data-toggle="tooltip"
+                                                            title="Chỉnh sửa"
+                                                            href="<c:url value='/admin-building?action=EDIT&id=${item.id}'/>">
+                                                            <i class=" ace-icon fa fa-edit bigger-120"></i>
+                                                        </a>
 
-                                                    <a class="btn btn-xs btn-info" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"
-                                                        href="<c:url value='/admin-building?action=EDIT&id=${item.id}'/>">
-                                                        <i class=" ace-icon fa fa-edit bigger-120"></i>
-                                                    </a>
-
-                                                    <button class="btn btn-xs btn-danger" data-toggle="tooltip"
-                                                        title="Giao tòa nhà" onclick="assignmentBuilding(${item.id})">
-                                                        <i class=" ace-icon fa fa-bars bigger-120"></i>
-                                                    </button>
+                                                        <button class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                                            title="Giao tòa nhà"
+                                                            onclick="assignmentBuilding(${item.id})">
+                                                            <i class=" ace-icon fa fa-bars bigger-120"></i>
+                                                        </button>
+                                                    </c:if>
 
                                                     <button class="btn btn-xs btn-warning" data-toggle="tooltip"
                                                         title="Thêm vào danh sách ưu tiên">

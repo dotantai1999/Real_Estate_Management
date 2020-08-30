@@ -84,23 +84,25 @@
                         <div class="col-xs-12">
                             <h2 class="header blue text-center margin-top-md">Danh sách khách hàng </h2>
 
-                            <!-- Buttons -->
-                            <div class="clearfix">
-                                <div class="pull-right tableTools-container">
-                                    <div class="dt-buttons btn-overlap btn-group">
-                                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
-                                            data-toggle="tooltip" title="Thêm"
-                                            href="<c:url value='/admin-customer?action=ADD'/>">
-                                            <i class="fa fa-plus-circle bigger-110 blue" aria-hidden="true"></i>
-                                        </a>
-                                        <button
-                                            class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
-                                            data-toggle="tooltip" title="Xóa" id="deleteCustomer">
-                                            <i class=" fa fa-trash bigger-110 red"></i>
-                                        </button>
+                            <c:if test="${sessionScope.role == 1}">
+                                <!-- Buttons -->
+                                <div class="clearfix">
+                                    <div class="pull-right tableTools-container">
+                                        <div class="dt-buttons btn-overlap btn-group">
+                                            <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
+                                                data-toggle="tooltip" title="Thêm"
+                                                href="<c:url value='/admin-customer?action=ADD'/>">
+                                                <i class="fa fa-plus-circle bigger-110 blue" aria-hidden="true"></i>
+                                            </a>
+                                            <button
+                                                class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
+                                                data-toggle="tooltip" title="Xóa" id="deleteCustomer">
+                                                <i class=" fa fa-trash bigger-110 red"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </c:if>
 
                             <!-- Results Search
                             <div class="table-header">
@@ -118,10 +120,9 @@
                                             </label>
                                         </th>
                                         <th>Tên</th>
-                                        <th>Nhu cầu</th>
-                                        <th>Người nhập</th>
-                                        <th>Ngày nhập</th>
-                                        <th>Tình trạng</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Số Điện Thoại</th>
+                                        <th>Email</th>
                                         <th>Thao tác</th>
                                     </tr>
                                 </thead>
@@ -137,10 +138,9 @@
                                                 </label>
                                             </td>
                                             <td>${item.name}</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>${item.address}</td>
+                                            <td>${item.phone}</td>
+                                            <td>${item.email}</td>
                                             <td>
                                                 <div class="hidden-sm hidden-xs btn-group">
                                                     <a class="btn btn-xs btn-success" data-toggle="tooltip"
@@ -148,15 +148,18 @@
                                                         href="<c:url value='/admin-customer?action=VIEW&id=${item.id}'/>">
                                                         <i class="ace-icon fa fa-eye bigger-120"></i>
                                                     </a>
-                                                    <a class="btn btn-xs btn-info" data-toggle="tooltip"
-                                                        title="Chỉnh sửa"
-                                                        href="<c:url value='/admin-customer?action=EDIT&id=${item.id}'/>">
-                                                        <i class=" ace-icon fa fa-edit bigger-120"></i>
-                                                    </a>
-                                                    <button class="btn btn-xs btn-danger" data-toggle="tooltip"
-                                                        title="Giao tòa nhà" onclick="assignmentBuilding(${item.id})">
-                                                        <i class=" ace-icon fa fa-bars bigger-120"></i>
-                                                    </button>
+                                                    <c:if test="${sessionScope.role == 1}">
+                                                        <a class="btn btn-xs btn-info" data-toggle="tooltip"
+                                                            title="Chỉnh sửa"
+                                                            href="<c:url value='/admin-customer?action=EDIT&id=${item.id}'/>">
+                                                            <i class=" ace-icon fa fa-edit bigger-120"></i>
+                                                        </a>
+                                                        <button class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                                            title="Giao tòa nhà"
+                                                            onclick="assignmentBuilding(${item.id})">
+                                                            <i class=" ace-icon fa fa-bars bigger-120"></i>
+                                                        </button>
+                                                    </c:if>
                                                 </div>
                                             </td>
                                         </tr>

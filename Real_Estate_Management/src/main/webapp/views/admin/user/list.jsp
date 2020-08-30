@@ -80,23 +80,25 @@
                         <div class="col-xs-12">
                             <h2 class="header blue text-center margin-top-md">Danh sách người dùng </h2>
 
-                            <!-- Buttons -->
-                            <div class="clearfix">
-                                <div class="pull-right tableTools-container">
-                                    <div class="dt-buttons btn-overlap btn-group">
-                                        <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
-                                            data-toggle="tooltip" title="Thêm"
-                                            href="<c:url value='/admin-user?action=ADD'/>">
-                                            <i class="fa fa-plus-circle bigger-110 blue" aria-hidden="true"></i>
-                                        </a>
-                                        <button
-                                            class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
-                                            data-toggle="tooltip" title="Xóa" id="deleteBuilding">
-                                            <i class=" fa fa-trash bigger-110 red"></i>
-                                        </button>
+                            <c:if test="${sessionScope.role == 1}">
+                                <!-- Buttons -->
+                                <div class="clearfix">
+                                    <div class="pull-right tableTools-container">
+                                        <div class="dt-buttons btn-overlap btn-group">
+                                            <a class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
+                                                data-toggle="tooltip" title="Thêm"
+                                                href="<c:url value='/admin-user?action=ADD'/>">
+                                                <i class="fa fa-plus-circle bigger-110 blue" aria-hidden="true"></i>
+                                            </a>
+                                            <button
+                                                class="dt-button buttons-collection buttons-colvis btn btn-white btn-primary btn-bold"
+                                                data-toggle="tooltip" title="Xóa" id="deleteUser">
+                                                <i class=" fa fa-trash bigger-110 red"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </c:if>
 
                             <!-- Results Search
                             <div class="table-header">
@@ -119,7 +121,7 @@
                                     </tr>
                                 </thead>
 
-                                <tbody id="buildingList">
+                                <tbody id="userList">
                                     <c:forEach var="item" items="${users}">
                                         <tr>
                                             <td class="center">
