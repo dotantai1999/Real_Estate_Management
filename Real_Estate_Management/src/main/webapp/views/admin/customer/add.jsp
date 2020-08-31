@@ -37,24 +37,24 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="company"> Tên công ty
+                                <label class="col-sm-3 control-label no-padding-right" for="address"> Địa chỉ
                                 </label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="company" name="company" class="col-xs-10 col-sm-5" />
+                                    <input type="text" id="address" name="address" class="col-xs-10 col-sm-5" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="demand"> Nhu cầu
+                                <label class="col-sm-3 control-label no-padding-right" for="phonenumber"> Số điện thoại
                                 </label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="demand" name="demand" class="col-xs-10 col-sm-5" />
+                                    <input type="text" id="phonenumber" name="phonenumber" class="col-xs-10 col-sm-5" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="note"> Ghi chú
+                                <label class="col-sm-3 control-label no-padding-right" for="email"> Email
                                 </label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="note" name="note" class="col-xs-10 col-sm-5" />
+                                    <input type="email" id="email" name="email" class="col-xs-10 col-sm-5" />
                                 </div>
                             </div>
                             <div class="form-group">

@@ -26,11 +26,13 @@
         </div>
 
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
-        <c:if test = "${sessionScope.username != null}">
-            <ul class="nav ace-nav">
+            <c:if test="${sessionScope.username != null}">
+                <ul class="nav ace-nav">
                     <li class="light-blue dropdown-modal">
                         <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="<c:url value='/template/admin/assets/images/avatars/user.jpg' />" alt="Jason's Photo" />
+                            <img class="nav-user-photo"
+                                src="<c:url value='/template/admin/assets/images/avatars/user.jpg' />"
+                                alt="Jason's Photo" />
                             <span class="user-info">
                                 <small>Welcome,</small>
                                 ${sessionScope.username}
@@ -51,20 +53,20 @@
                             <li class="divider"></li>
 
                             <li>
-                                <a href="logout">
+                                <a href="<c:url value='/logout' />">
                                     <i class="ace-icon fa fa-power-off"></i>
                                     Đăng xuất
                                 </a>
                             </li>
                         </ul>
                     </li>
-                </ul> 
+                </ul>
 
             </c:if>
-            <c:if test = "${sessionScope.username == null}">
-	            <a class="btn btn-xs btn-info" style="margin-top: 8px" href="login">
-	            	Đăng nhập / Đăng ký
-            	</a>
+            <c:if test="${sessionScope.username == null}">
+                <a class="btn btn-xs btn-info" style="margin-top: 8px" href="login">
+                    Đăng nhập / Đăng ký
+                </a>
             </c:if>
         </div>
     </div>
