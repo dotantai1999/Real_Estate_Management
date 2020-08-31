@@ -44,7 +44,7 @@ public class PriorityBuildingController extends HttpServlet {
 			priorityBuildingListDTO.setUserId(userId);
 			priorityBuildingListDTO.setBuildingId(buildingId);
 			Long id = priorityBuildingListService.insert(priorityBuildingListDTO);
-			response.sendRedirect("admin-building/priority-list?action=LIST");
+			response.sendRedirect("/Real_Estate_Management/admin-building/priority-list?action=LIST");
 		} else {
 			HttpSession session = request.getSession();
 			Long idUser = (Long) session.getAttribute("id");
