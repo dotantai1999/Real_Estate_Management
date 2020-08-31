@@ -151,7 +151,13 @@
                                                 <td style="text-decoration-line: line-through;">${item.userName}</td>
                                                 <td style="text-decoration-line: line-through;">${item.fullName}</td>
                                                 <td>
-
+                                                    <div class="hidden-sm hidden-xs btn-group">
+                                                        <a class="btn btn-xs btn-danger" data-toggle="tooltip"
+                                                            title="Khôi phục"
+                                                            href="<c:url value='/admin-user?action=RESTORE&id=${item.id}'/>">
+                                                            <i class=" ace-icon fa fa-undo bigger-120"></i>
+                                                        </a>
+                                                    </div>
                                                 </td>
                                             </c:if>
                                         </tr>
