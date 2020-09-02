@@ -29,7 +29,7 @@
                 <!-- Main Content -->
                 <div class="row">
                     <!-- Search -->
-                    <div class="widget-box widget-color-blue">
+                    <!-- <div class="widget-box widget-color-blue">
                         <div class="widget-header">
                             <h4 class="widget-title">Tìm kiếm</h4>
 
@@ -73,7 +73,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Building Table -->
                     <div class="row">
@@ -137,7 +137,7 @@
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
                                                         <a class="btn btn-xs btn-info" data-toggle="tooltip"
-                                                            title="Chỉnh sửa"
+                                                            title="Nâng cấp"
                                                             href="<c:url value='/admin-user?action=EDIT&id=${item.id}'/>">
                                                             <i class=" ace-icon fa fa-edit bigger-120"></i>
                                                         </a>
@@ -154,7 +154,7 @@
                                                     <div class="hidden-sm hidden-xs btn-group">
                                                         <a class="btn btn-xs btn-danger" data-toggle="tooltip"
                                                             title="Khôi phục"
-                                                            href="<c:url value='/admin-user?action=RESTORE&id=${item.id}'/>">
+                                                            href="<c:url value='/admin-user?action=RESTORE&userId=${item.id}'/>">
                                                             <i class=" ace-icon fa fa-undo bigger-120"></i>
                                                         </a>
                                                     </div>

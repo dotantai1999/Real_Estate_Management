@@ -29,7 +29,7 @@
                 <!-- Main Content -->
                 <div class="row">
                     <!-- Search -->
-                    <div class="widget-box widget-color-blue">
+                    <!-- <div class="widget-box widget-color-blue">
                         <div class="widget-header">
                             <h4 class="widget-title">Tìm kiếm</h4>
 
@@ -77,7 +77,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Building Table -->
                     <div class="row">

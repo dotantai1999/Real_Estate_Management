@@ -27,19 +27,8 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h2 class="header blue text-center">Chỉnh sửa người dùng </h2>                    
+                        <h2 class="header blue text-center">Chỉnh sửa người dùng </h2>
                         <form class="form-horizontal" id="formEdit" role="form" method="POST" action="${userURL}">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label no-padding-right" for="role"> Vai trò
-                                </label>
-                                <div class="col-sm-9">
-                                    <select name="role" id="role" class="chosen-select">
-                                        <option value="" selected disabled>Chọn vai trò</option>
-                                        <option value="">Người dùng</option>
-                                        <option value="">Quản lý</option>
-                                    </select>
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label no-padding-right" for="userName"> Tên đăng nhập
                                 </label>
@@ -62,7 +51,6 @@
                                 </label>
                                 <div class="col-sm-9">
                                     <button type="submit" class="btn btn-primary">Cập nhật người dùng</button>
-                                    <button type="button" class="btn btn-danger">Reset mật khẩu</button>
                                 </div>
                             </div>
                         </form>
